@@ -13,12 +13,15 @@
     @foreach (var vm in Model)
     {
         <div class="col-md-4">
-            <h2>vm.Name</h2>
+            <h2>@vm.Name</h2>
             <p>
-                vm.Address.Country
+                
             </p>
             <p>
-                vm.Description
+                @vm.Town, @vm.Country
+            </p>
+            <p>
+                @vm.Description
             </p>
         </div>
     }

@@ -8,7 +8,9 @@
 
         public string Name { get; set; }
 
-        public Address Address { get; set; }
+        public string Town { get; set; }
+
+        public string Country { get; set; }
 
         public byte[] Image { get; set; }
 

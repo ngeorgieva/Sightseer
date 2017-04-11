@@ -3,7 +3,6 @@
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
-    using System.Linq;
 
     public class Attraction
     {
@@ -18,20 +17,11 @@
     
         public string Name { get; set; }
 
-        public Address Address { get; set; }
+        public virtual Address Address { get; set; }
 
         [Column(TypeName = "image")]
         public byte[] Image { get; set; }
-
-        public double Rating
-        {
-            get
-            {
-                return (double)this.Reviews.Sum(r => r.StarRating) / this.Reviews.Count;  
-            }
-        }
-
-        [Required]
+        
         [DataType(DataType.MultilineText)]
         public string Description { get; set; }
 

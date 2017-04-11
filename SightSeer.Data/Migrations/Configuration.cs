@@ -6,6 +6,7 @@ namespace SightSeer.Data.Migrations
     using System.Data.Entity.Validation;
     using System.IO;
     using System.Linq;
+    using System.Net;
     using System.Text;
     using Microsoft.AspNet.Identity;
     using Microsoft.AspNet.Identity.EntityFramework;
@@ -47,6 +48,7 @@ namespace SightSeer.Data.Migrations
 
             this.SeedContinents(context);
             this.SeedCountries(context);
+            this.SeedAttractions(context);
         }
 
         private void SeedContinents(SightseerContext context)
@@ -90,6 +92,40 @@ namespace SightSeer.Data.Migrations
 
             context.Countries.AddOrUpdate(c => c.CountryCode, countries.ToArray());
             this.SaveChanges(context);
+        }
+
+        private void SeedAttractions(SightseerContext context)
+        {
+            var country = context.Countries.FirstOrDefault(c => c.Name == "Bulgaria");
+            context.Attractions.AddOrUpdate(a => a.Id,
+                new Attraction()
+                {
+                    Name = "Aleksandar Nevski Cathedral",
+                    Address = new Address() { FirstLine = "Aleksander Nevski Square", Postcode = "1000", Town = new Town() {Name = "Sofia", Country = country }},
+                    Description = "The St. Alexander Nevsky Cathedral is a Bulgarian Orthodox cathedral in Sofia, the capital of Bulgaria. Built in Neo-Byzantine style, it serves as the cathedral church of the Patriarch of Bulgaria and it is one of the largest Eastern Orthodox cathedrals in the world, as well as one of Sofia\'s symbols and primary tourist attractions. The St. Alexander Nevsky Cathedral in Sofia occupies an area of 3,170 square metres (34,100 sq ft) and can hold 10,000 people inside. It is the second-largest cathedral located on the Balkan Peninsula, after the Cathedral of Saint Sava in Belgrade.",
+                    Image = this.DownloadImage("https://media-cdn.tripadvisor.com/media/photo-s/0b/46/82/bd/aleksandar-nevski-cathedral.jpg")
+                },
+                new Attraction());
+
+            this.SaveChanges(context);
+        }
+
+        private byte[] DownloadImage(string url)
+        {
+            byte[] image;
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
+            WebResponse response = request.GetResponse();
+
+            Stream stream = response.GetResponseStream();
+
+            using (BinaryReader br = new BinaryReader(stream))
+            {
+                image = br.ReadBytes(500000);
+                br.Close();
+            }
+            response.Close();
+
+            return image;
         }
 
         private void SaveChanges(DbContext context)
