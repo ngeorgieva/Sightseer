@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sightseer.WebApp", "Sightse
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SightSeer.Data", "SightSeer.Data\SightSeer.Data.csproj", "{7F675417-0FE3-41AB-AF02-85855334BD83}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sightseer.Services", "Sightseer.Services\Sightseer.Services.csproj", "{B412760D-CBB6-4B69-8DFC-515E83049B18}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{7F675417-0FE3-41AB-AF02-85855334BD83}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7F675417-0FE3-41AB-AF02-85855334BD83}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7F675417-0FE3-41AB-AF02-85855334BD83}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B412760D-CBB6-4B69-8DFC-515E83049B18}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B412760D-CBB6-4B69-8DFC-515E83049B18}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B412760D-CBB6-4B69-8DFC-515E83049B18}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B412760D-CBB6-4B69-8DFC-515E83049B18}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

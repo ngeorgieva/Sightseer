@@ -1,30 +1,38 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
-
-namespace Sightseer.WebApp.Controllers
+﻿namespace Sightseer.WebApp.Controllers
 {
+    using System.Collections.Generic;
+    using System.Web.Mvc;
+    using Models.ViewModels.Attractions;
+    using Services;
+
     public class HomeController : Controller
     {
+        private HomeService service;
+
+        public HomeController()
+        {
+            this.service = new HomeService();
+        }
+
+        [AllowAnonymous]
         public ActionResult Index()
         {
-            return View();
+            IEnumerable<AttractionVM> attractionVMs = this.service.GetTopAttractions();
+            return this.View(attractionVMs);
         }
 
         public ActionResult About()
         {
-            ViewBag.Message = "Your application description page.";
+            this.ViewBag.Message = "Your application description page.";
 
-            return View();
+            return this.View();
         }
 
         public ActionResult Contact()
         {
-            ViewBag.Message = "Your contact page.";
+            this.ViewBag.Message = "Your contact page.";
 
-            return View();
+            return this.View();
         }
     }
 }
