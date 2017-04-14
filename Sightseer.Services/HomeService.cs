@@ -10,16 +10,15 @@
     {
         public IEnumerable<AttractionVM> GetTopAttractions()
         {
-            var config = new MapperConfiguration(cfg =>
-            {
-                cfg.CreateMap<Attraction, AttractionVM>()
-                        .ForMember(dest => dest.Town, opts => opts.MapFrom(src => src.Address.Town.Name))
-                        .ForMember(dest => dest.Country, opts => opts.MapFrom(src => src.Address.Town.Country.Name));
-            });
+            //var config = new MapperConfiguration(cfg =>
+            //{
+            //    cfg.CreateMap<Attraction, AttractionVM>()
+                        
+            //});
 
-            IMapper mapper = config.CreateMapper();
+            //IMapper mapper = config.CreateMapper();
             IEnumerable<Attraction> attractions = this.Context.Attractions.Take(3);
-            IEnumerable<AttractionVM> avms = mapper.Map<IEnumerable<Attraction>, IEnumerable<AttractionVM>>(attractions);
+            IEnumerable<AttractionVM> avms = Mapper.Map<IEnumerable<Attraction>, IEnumerable<AttractionVM>>(attractions);
 
             return avms;
         }

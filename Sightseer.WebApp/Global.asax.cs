@@ -11,7 +11,7 @@
     {
         protected void Application_Start()
         {
-            ConfigureMappings();
+            this.ConfigureMappings();
             AreaRegistration.RegisterAllAreas();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
@@ -22,7 +22,9 @@
         {
             Mapper.Initialize(expression =>
             {
-                expression.CreateMap<Attraction, AttractionVM>();
+                expression.CreateMap<Attraction, AttractionVM>()
+                .ForMember(dest => dest.Town, opts => opts.MapFrom(src => src.Address.Town.Name))
+                .ForMember(dest => dest.Country, opts => opts.MapFrom(src => src.Address.Town.Country.Name));
             });
         }
     }
