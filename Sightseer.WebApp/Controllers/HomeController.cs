@@ -21,17 +21,9 @@
             return this.View(attractionVMs);
         }
 
-        public ActionResult About()
-        {
-            this.ViewBag.Message = "Your application description page.";
-
-            return this.View();
-        }
-
+        // TODO: Contact form if I have time
         public ActionResult Contact()
         {
-            this.ViewBag.Message = "Your contact page.";
-
             return this.View();
         }
     }

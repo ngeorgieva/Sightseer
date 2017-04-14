@@ -1,0 +1,66 @@
+﻿@model Sightseer.Models.ViewModels.Attractions.AttractionDetailsVm
+
+@{
+    ViewBag.Title = "Attraction Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Attraction</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+        
+        <dt>
+            @Html.DisplayNameFor(model => model.AddressFirstLine)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AddressFirstLine)
+        </dd>
+        
+        <dt>
+            @Html.DisplayNameFor(model => model.Town)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Town)
+        </dd>
+        
+        <dt>
+            @Html.DisplayNameFor(model => model.Country)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Country)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Image)
+        </dt>
+
+        <dd>
+                <img id="detailsViewAttractionImage" alt="Image" src="@Url.Content("/Attractions/AttractionImage?id=" + Model.Id)" />
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

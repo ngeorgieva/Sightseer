@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 using System.Web.Routing;
 
 namespace Sightseer.WebApp
@@ -12,6 +8,9 @@ namespace Sightseer.WebApp
         public static void RegisterRoutes(RouteCollection routes)
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
+
+            //TODO: Make the attribute routing work!
+            //routes.MapMvcAttributeRoutes();
 
             routes.MapRoute(
                 name: "Default",

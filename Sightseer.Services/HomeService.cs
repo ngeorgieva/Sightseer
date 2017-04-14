@@ -10,14 +10,7 @@
     {
         public IEnumerable<AttractionVM> GetTopAttractions()
         {
-            //var config = new MapperConfiguration(cfg =>
-            //{
-            //    cfg.CreateMap<Attraction, AttractionVM>()
-                        
-            //});
-
-            //IMapper mapper = config.CreateMapper();
-            IEnumerable<Attraction> attractions = this.Context.Attractions.Take(3);
+            IEnumerable<Attraction> attractions = this.Context.Attractions.OrderByDescending(a => a.Rating).Take(3);
             IEnumerable<AttractionVM> avms = Mapper.Map<IEnumerable<Attraction>, IEnumerable<AttractionVM>>(attractions);
 
             return avms;

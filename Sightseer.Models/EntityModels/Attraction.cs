@@ -1,8 +1,9 @@
 ﻿namespace Sightseer.Models.EntityModels
 {
+    using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
+    using System.Linq;
 
     public class Attraction
     {
@@ -22,8 +23,9 @@
         [Column(TypeName = "image")]
         public byte[] Image { get; set; }
         
-        [DataType(DataType.MultilineText)]
         public string Description { get; set; }
+
+        public int Rating { get; set; }
 
         public virtual ICollection<Review> Reviews
         {

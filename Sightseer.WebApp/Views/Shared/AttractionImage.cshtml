@@ -1,0 +1,12 @@
+﻿@model Sightseer.Models.EntityModels.Attraction
+    
+@{
+    if (Model.Image != null)
+    {
+        WebImage wi = new WebImage(Model.Image);
+        wi.Resize(100, 200, true, true);
+
+        wi.Write();
+    }
+}
+

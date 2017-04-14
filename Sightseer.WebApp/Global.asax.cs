@@ -25,6 +25,11 @@
                 expression.CreateMap<Attraction, AttractionVM>()
                 .ForMember(dest => dest.Town, opts => opts.MapFrom(src => src.Address.Town.Name))
                 .ForMember(dest => dest.Country, opts => opts.MapFrom(src => src.Address.Town.Country.Name));
+
+                expression.CreateMap<Attraction, AttractionDetailsVm>()
+                .ForMember(desc => desc.AddressFirstLine, opts => opts.MapFrom(src => src.Address.FirstLine))
+                .ForMember(dest => dest.Town, opts => opts.MapFrom(src => src.Address.Town.Name))
+                .ForMember(dest => dest.Country, opts => opts.MapFrom(src => src.Address.Town.Country.Name));
             });
         }
     }
