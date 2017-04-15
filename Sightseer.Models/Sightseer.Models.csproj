@@ -94,12 +94,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="EntityModels\Address.cs" />
+    <Compile Include="EntityModels\ApplicationUser.cs" />
     <Compile Include="EntityModels\Continent.cs" />
     <Compile Include="EntityModels\Country.cs" />
     <Compile Include="EntityModels\Review.cs" />
     <Compile Include="EntityModels\Attraction.cs" />
     <Compile Include="EntityModels\Town.cs" />
-    <Compile Include="EntityModels\ApplicationUser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\Account\ExternalLoginConfirmationViewModel.cs" />
     <Compile Include="ViewModels\Account\ExternalLoginListViewModel.cs" />

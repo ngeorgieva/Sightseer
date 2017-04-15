@@ -1,5 +1,6 @@
 namespace Sightseer.Models.ViewModels.Account
 {
+    using System;
     using System.ComponentModel.DataAnnotations;
 
     public class RegisterViewModel
@@ -19,5 +20,18 @@ namespace Sightseer.Models.ViewModels.Account
         [Display(Name = "Confirm password")]
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
+
+        [Display(Name = "First Name")]
+        public string FirstName { get; set; }
+
+        [Display(Name = "Last Name")]
+        public string LastName { get; set; }
+
+        [Display(Name = "Date of Birth")]
+        public DateTime? DateOfBirth { get; set; }
+
+        public string Town { get; set; }
+
+        public string Country { get; set; }
     }
 }

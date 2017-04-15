@@ -4,7 +4,7 @@
 
     public abstract class Service
     {
-        public Service()
+        protected Service()
         {
             this.Context = new SightseerContext();
         }
