@@ -98,7 +98,8 @@
                     Name = "Aleksandar Nevski Cathedral",
                     Address = new Address() { FirstLine = "Aleksander Nevski Square", Postcode = "1000", Town = townSofia },
                     Description = "The St. Alexander Nevsky Cathedral is a Bulgarian Orthodox cathedral in Sofia, the capital of Bulgaria. Built in Neo-Byzantine style, it serves as the cathedral church of the Patriarch of Bulgaria and it is one of the largest Eastern Orthodox cathedrals in the world, as well as one of Sofia\'s symbols and primary tourist attractions. The St. Alexander Nevsky Cathedral in Sofia occupies an area of 3,170 square metres (34,100 sq ft) and can hold 10,000 people inside. It is the second-largest cathedral located on the Balkan Peninsula, after the Cathedral of Saint Sava in Belgrade.",
-                    Image = this.DownloadImage("https://media-cdn.tripadvisor.com/media/photo-s/0b/46/82/bd/aleksandar-nevski-cathedral.jpg")
+                    Image = this.DownloadImage("https://media-cdn.tripadvisor.com/media/photo-s/0b/46/82/bd/aleksandar-nevski-cathedral.jpg"),
+                    Rating = 4.5
                 });
 
             var townRio = GetTown(context, "Brazil", "Rio de Janeiro");
@@ -108,7 +109,8 @@
                 Name = "Christ the Redeemer",
                 Address = new Address() { FirstLine = "Corcovado mountain", Postcode = "1000", Town = townRio },
                 Description = @"Christ the Redeemer is an Art Deco statue of Jesus Christ in Rio de Janeiro, Brazil, created by French sculptor Paul Landowski and built by the Brazilian engineer Heitor da Silva Costa, in collaboration with the French engineer Albert Caquot. Romanian sculptor Gheorghe Leonida fashioned the face. The statue is 30 metres (98 ft) tall, not including its 8-metre (26 ft) pedestal, and its arms stretch 28 metres (92 ft) wide.The statue weighs 635 metric tons(625 long, 700 short tons), and is located at the peak of the 700 - metre(2, 300 ft) Corcovado mountain in the Tijuca Forest National Park overlooking the city of Rio.A symbol of Christianity across the world, the statue has also become a cultural icon of both Rio de Janeiro and Brazil, and is listed as one of the New Seven Wonders of the World. It is made of reinforced concrete and soapstone, and was constructed between 1922 and 1931.",
-                Image = this.DownloadImage("http://kingofwallpapers.com/christ-the-redeemer-wallpaper/christ-the-redeemer-wallpaper-010.jpg")
+                Image = this.DownloadImage("http://kingofwallpapers.com/christ-the-redeemer-wallpaper/christ-the-redeemer-wallpaper-010.jpg"),
+                Rating = 5
             });
 
             var townAmesbury = GetTown(context, "United Kingdom", "Amesbury");
@@ -118,7 +120,8 @@
                 Name = "Stonehenge",
                 Address = new Address() { Postcode = "SP4 7DE", Town = townAmesbury },
                 Description = @"Stonehenge is a prehistoric monument in Wiltshire, England, 2 miles (3 km) west of Amesbury and 8 miles (13 km) north of Salisbury. Stonehenge consists of ring of standing stones, with each standing stone around 4.1 metres (13 ft) high, 2.1 metres (6 ft 11 in) wide and weighing around 25 tons. The stones are set within earthworks in the middle of the most dense complex of Neolithic and Bronze Age monuments in England, including several hundred burial mounds. Archaeologists believe it was constructed from 3000 BC to 2000 BC. The surrounding circular earth bank and ditch, which constitute the earliest phase of the monument, have been dated to about 3100 BC. Radiocarbon dating suggests that the first bluestones were raised between 2400 and 2200 BC, although they may have been at the site as early as 3000 BC. One of the most famous landmarks in the UK, Stonehenge is regarded as a British cultural icon.",
-                Image = this.DownloadImage("http://www.english-heritage.org.uk/remote/www.english-heritage.org.uk/content/properties/stonehenge/portico/2670999/stonehenge-sunrise?w=640&mode=none&scale=downscale&quality=60&anchor=middlecenter")
+                Image = this.DownloadImage("http://www.english-heritage.org.uk/remote/www.english-heritage.org.uk/content/properties/stonehenge/portico/2670999/stonehenge-sunrise?w=640&mode=none&scale=downscale&quality=60&anchor=middlecenter"),
+                Rating = 4.33
             });
 
             var townParis = GetTown(context, "France", "Paris");
