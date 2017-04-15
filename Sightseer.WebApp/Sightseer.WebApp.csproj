@@ -275,6 +275,7 @@
     <Content Include="Views\Attractions\Edit.cshtml" />
     <Content Include="Views\Attractions\Index.cshtml" />
     <Content Include="Views\Shared\AttractionImage.cshtml" />
+    <Content Include="Views\Account\UserProfile.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

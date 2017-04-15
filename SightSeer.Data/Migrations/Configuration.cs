@@ -285,27 +285,31 @@
 
         private static void CreateUser(SightseerContext context, string firstName, string lastName, string email, string password, DateTime dateOfBirth, string role)
         {
-            var store = new UserStore<ApplicationUser>(context);
-            var manager = new UserManager<ApplicationUser>(store);
-
-            var user = new ApplicationUser()
+            if (!context.Users.Any(u => u.Email == email))
             {
-                UserName = firstName,
-                AccessFailedCount = 0,
-                FirstName = firstName,
-                LastName = lastName,
-                Email = email,
-                DateOfBirth = dateOfBirth
-            };
+                var store = new UserStore<ApplicationUser>(context);
+                var manager = new UserManager<ApplicationUser>(store);
 
-            var result = manager.Create(user, password);
+                var user = new ApplicationUser()
+                {
+                    UserName = email,
+                    AccessFailedCount = 0,
+                    FirstName = firstName,
+                    LastName = lastName,
+                    Email = email,
+                    DateOfBirth = dateOfBirth,
+                    LockoutEnabled = true
+                };
 
-            if (result.Succeeded == false)
-            {
-                throw new Exception(result.Errors.First());
+                var result = manager.Create(user, password);
+
+                if (result.Succeeded == false)
+                {
+                    throw new Exception(result.Errors.First());
+                }
+
+                manager.AddToRole(user.Id, role);
             }
-
-            manager.AddToRole(user.Id, role);
         }
 
         private byte[] DownloadImage(string url)

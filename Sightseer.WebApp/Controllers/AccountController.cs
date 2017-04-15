@@ -152,12 +152,11 @@
         {
             if (this.ModelState.IsValid)
             {
-                //Town userHometown = this.service.GetUserLocation(model.Town, model.Country);
                 var user = new ApplicationUser { UserName = model.Email, Email = model.Email, FirstName = model.FirstName, LastName = model.LastName, DateOfBirth = model.DateOfBirth };
                 var result = await this.UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
-                    this.UserManager.AddToRole(user.Id, "User");
+                    this.UserManager.AddToRole(user.Id, "Traveller");
                     await this.SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
 
                     // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
@@ -284,6 +283,14 @@
         {
             // Request a redirect to the external login provider
             return new ChallengeResult(provider, Url.Action("ExternalLoginCallback", "Account", new { ReturnUrl = returnUrl }));
+        }
+
+        public ActionResult UserProfile()
+        {
+            string userName = this.User.Identity.Name;
+            UserProfileVm vm = this.service.GetUserProfile(userName);
+
+            return this.View(vm);
         }
 
         //
