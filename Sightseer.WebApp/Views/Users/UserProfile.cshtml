@@ -1,20 +1,14 @@
-﻿@model Sightseer.Models.ViewModels.Account.UserProfileVm
+﻿@model Sightseer.Models.ViewModels.Users.UserProfileVm
 
 @{
     ViewBag.Title = "Profile page";
 }
 
 <div>
-    <h4>Attraction</h4>
+    <h4>My profile</h4>
     <hr />
+    @Html.ActionLink("Edit", "EditProfile")
     <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Username)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Username)
-        </dd>
 
         <dt>
             @Html.DisplayNameFor(model => model.FirstName)
@@ -55,10 +49,6 @@
         <dd>
             @Html.DisplayFor(model => model.Town)
         </dd>
-        
-        <dd>
-            @Html.DisplayFor(model => model.Country)
-        </dd>
 
         <dt>
             @Html.DisplayNameFor(model => model.Country)
@@ -74,10 +64,11 @@
         <dd>
             @foreach (var attr in Model.ReviewedAttractions)
             {
-                @Html.DisplayName($"{attr.Name}, Location: {attr.Town}, {attr.Country}");
+                @Html.ActionLink(attr.Name, "Details", "Attractions", new { id = attr.Id }, null)
+                @Html.DisplayName($", {attr.Town}, {attr.Country}")<br/>
             }
         </dd>
     </dl>
 </div>
 
-@Html.ActionLink("Home", "Index", "Home");
+@Html.ActionLink("Home", "Index", "Home")

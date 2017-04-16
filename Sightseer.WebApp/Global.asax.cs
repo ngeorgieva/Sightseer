@@ -7,6 +7,7 @@
     using System.Web.Optimization;
     using System.Web.Routing;
     using Models.ViewModels.Account;
+    using Models.ViewModels.Users;
 
     public class MvcApplication : System.Web.HttpApplication
     {
@@ -23,7 +24,7 @@
         {
             Mapper.Initialize(expression =>
             {
-                expression.CreateMap<Attraction, AttractionVM>()
+                expression.CreateMap<Attraction, AttractionVm>()
                 .ForMember(dest => dest.Town, opts => opts.MapFrom(src => src.Address.Town.Name))
                 .ForMember(dest => dest.Country, opts => opts.MapFrom(src => src.Address.Town.Country.Name));
 
@@ -31,6 +32,10 @@
                 .ForMember(desc => desc.AddressFirstLine, opts => opts.MapFrom(src => src.Address.FirstLine))
                 .ForMember(dest => dest.Town, opts => opts.MapFrom(src => src.Address.Town.Name))
                 .ForMember(dest => dest.Country, opts => opts.MapFrom(src => src.Address.Town.Country.Name));
+
+                expression.CreateMap<ApplicationUser, EditUserProfiveVm>()
+                .ForMember(dest => dest.Town, opts => opts.MapFrom(src => src.Town.Name))
+                .ForMember(dest => dest.Country, opts => opts.MapFrom(src => src.Town.Country.Name));
             });
         }
     }

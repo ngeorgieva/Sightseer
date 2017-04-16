@@ -28,10 +28,10 @@
             return attr;
         }
 
-        public IEnumerable<AttractionVM> GetAllAttractions()
+        public IEnumerable<AttractionVm> GetAllAttractions()
         {
             IEnumerable<Attraction> attractions = this.Context.Attractions.OrderByDescending(a => a.Rating);
-            IEnumerable<AttractionVM> avms = Mapper.Map<IEnumerable<Attraction>, IEnumerable<AttractionVM>>(attractions);
+            IEnumerable<AttractionVm> avms = Mapper.Map<IEnumerable<Attraction>, IEnumerable<AttractionVm>>(attractions);
 
             return avms;
         }

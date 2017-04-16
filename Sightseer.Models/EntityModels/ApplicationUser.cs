@@ -14,7 +14,7 @@
 
         public DateTime? DateOfBirth { get; set; }
 
-        public Town Town { get; set; }
+        public virtual Town Town { get; set; }
 
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
         {

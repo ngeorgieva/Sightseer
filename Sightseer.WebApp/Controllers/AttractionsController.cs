@@ -24,7 +24,7 @@
         [AllowAnonymous]
         public ActionResult Index()
         {
-            IEnumerable<AttractionVM> avm = this.service.GetAllAttractions();
+            IEnumerable<AttractionVm> avm = this.service.GetAllAttractions();
             return this.View(avm);
         }
 

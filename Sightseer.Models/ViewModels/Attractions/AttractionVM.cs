@@ -1,6 +1,6 @@
 ﻿namespace Sightseer.Models.ViewModels.Attractions
 {
-    public class AttractionVM
+    public class AttractionVm
     {
         public int Id { get; set; }
 

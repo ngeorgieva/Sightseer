@@ -8,10 +8,10 @@
 
     public class HomeService : Service
     {
-        public IEnumerable<AttractionVM> GetTopAttractions()
+        public IEnumerable<AttractionVm> GetTopAttractions()
         {
             IEnumerable<Attraction> attractions = this.Context.Attractions.OrderByDescending(a => a.Rating).Take(3);
-            IEnumerable<AttractionVM> avms = Mapper.Map<IEnumerable<Attraction>, IEnumerable<AttractionVM>>(attractions);
+            IEnumerable<AttractionVm> avms = Mapper.Map<IEnumerable<Attraction>, IEnumerable<AttractionVm>>(attractions);
 
             return avms;
         }

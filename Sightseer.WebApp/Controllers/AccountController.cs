@@ -16,11 +16,11 @@
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
-        private AccountService service;
+        private UserService service;
 
         public AccountController()
         {
-            this.service = new AccountService();
+            this.service = new UserService();
         }
 
         public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager )
@@ -69,9 +69,9 @@
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Login(LoginViewModel model, string returnUrl)
         {
-            if (!ModelState.IsValid)
+            if (!this.ModelState.IsValid)
             {
-                return View(model);
+                return this.View(model);
             }
 
             // This doesn't count login failures towards account lockout
@@ -283,14 +283,6 @@
         {
             // Request a redirect to the external login provider
             return new ChallengeResult(provider, Url.Action("ExternalLoginCallback", "Account", new { ReturnUrl = returnUrl }));
-        }
-
-        public ActionResult UserProfile()
-        {
-            string userName = this.User.Identity.Name;
-            UserProfileVm vm = this.service.GetUserProfile(userName);
-
-            return this.View(vm);
         }
 
         //

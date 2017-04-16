@@ -205,6 +205,7 @@
     <Compile Include="Controllers\AttractionsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -275,7 +276,8 @@
     <Content Include="Views\Attractions\Edit.cshtml" />
     <Content Include="Views\Attractions\Index.cshtml" />
     <Content Include="Views\Shared\AttractionImage.cshtml" />
-    <Content Include="Views\Account\UserProfile.cshtml" />
+    <Content Include="Views\Users\UserProfile.cshtml" />
+    <Content Include="Views\Users\EditProfile.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
