@@ -55,7 +55,19 @@
             this.Context.SaveChanges();
         }
 
-        public Town GetUserLocation(string townName, string countryName)
+        public bool IsEmailUnique(string email, string username)
+        {
+            ApplicationUser user = this.Context.Users.FirstOrDefault(u => u.UserName == username);
+
+            if (user.Email == email)
+            {
+                return true;
+            }
+
+            return !this.Context.Users.Any(u => u.Email == email);
+        }
+
+        private Town GetUserLocation(string townName, string countryName)
         {
             var country = this.Context.Countries.FirstOrDefault(c => c.Name == countryName);
 
@@ -74,18 +86,6 @@
             }
 
             return null;
-        }
-
-        public bool IsEmailUnique(string email, string username)
-        {
-            ApplicationUser user = this.Context.Users.FirstOrDefault(u => u.UserName == username);
-
-            if (user.Email == email)
-            {
-                return true;
-            }
-
-            return !this.Context.Users.Any(u => u.Email == email);
         }
 
         //public bool IsUsernameUnique(string newUsername, string username)

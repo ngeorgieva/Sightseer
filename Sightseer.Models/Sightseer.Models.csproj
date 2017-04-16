@@ -61,6 +61,7 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.Helpers.dll</HintPath>
       <Private>True</Private>
@@ -93,6 +94,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BindingModels\CreateAttractionBm.cs" />
     <Compile Include="BindingModels\EditUserBm.cs" />
     <Compile Include="EntityModels\Address.cs" />
     <Compile Include="EntityModels\ApplicationUser.cs" />
@@ -110,6 +112,7 @@
     <Compile Include="ViewModels\Account\RegisterViewModel.cs" />
     <Compile Include="ViewModels\Account\ResetPasswordViewModel.cs" />
     <Compile Include="ViewModels\Account\SendCodeViewModel.cs" />
+    <Compile Include="ViewModels\Attractions\CreateAttractionVm.cs" />
     <Compile Include="ViewModels\Users\EditUserProfiveVm.cs" />
     <Compile Include="ViewModels\Users\UserProfileVm.cs" />
     <Compile Include="ViewModels\Account\VerifyCodeViewModel.cs" />

@@ -3,7 +3,9 @@
     using System.Collections.Generic;
     using System.Data.Entity;
     using System.Net;
+    using System.Web;
     using System.Web.Mvc;
+    using Models.BindingModels;
     using Models.EntityModels;
     using Models.ViewModels.Attractions;
     using Services;
@@ -48,6 +50,7 @@
         }
 
         // GET: Attractions/Create
+        [Authorize(Roles = "Admin,Traveller")]
         public ActionResult Create()
         {
             return this.View();
@@ -58,19 +61,20 @@
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Name,Image,Description")] Attraction attraction)
+        [Authorize(Roles = "Admin,Traveller")]
+        public ActionResult Create(CreateAttractionBm bind, HttpPostedFileBase file)
         {
             if (this.ModelState.IsValid)
             {
-                db.Attractions.Add(attraction);
-                db.SaveChanges();
-                return this.RedirectToAction("Index");
+                this.service.CreateAttraction(bind, file);
+                return this.RedirectToAction("Index", "Attractions");
             }
 
-            return this.View(attraction);
+            return this.View();
         }
 
         // GET: Attractions/Edit/5
+        [Authorize(Roles = "Admin,Traveller")]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -90,15 +94,16 @@
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin,Traveller")]
         public ActionResult Edit([Bind(Include = "Id,Name,Image,Description")] Attraction attraction)
         {
-            if (ModelState.IsValid)
+            if (this.ModelState.IsValid)
             {
                 db.Entry(attraction).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return this.RedirectToAction("Index");
             }
-            return View(attraction);
+            return this.View(attraction);
         }
 
         // GET: Attractions/Delete/5
