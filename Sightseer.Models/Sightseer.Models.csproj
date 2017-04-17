@@ -95,6 +95,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BindingModels\CreateAttractionBm.cs" />
+    <Compile Include="BindingModels\CreateReviewBm.cs" />
     <Compile Include="BindingModels\EditAttractionBm.cs" />
     <Compile Include="BindingModels\EditUserBm.cs" />
     <Compile Include="EntityModels\Address.cs" />

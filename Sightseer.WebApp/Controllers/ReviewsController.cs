@@ -4,8 +4,8 @@
     using System.Data.Entity;
     using System.Net;
     using System.Web.Mvc;
+    using Models.BindingModels;
     using Models.EntityModels;
-    using Models.ViewModels;
     using Models.ViewModels.Reviews;
     using Services;
     using SightSeer.Data;
@@ -23,76 +23,35 @@
             }
 
             IEnumerable<ReviewVm> rvms = this.service.GetAllReviewsForAttraction((int)attractionId);
-            return this.PartialView(rvms);
-        }
 
-        // GET: Reviews/Details/5
-        public ActionResult Details(int? id)
-        {
-            if (id == null)
+            if (rvms == null)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                return this.HttpNotFound();
             }
-            Review review = db.Reviews.Find(id);
-            if (review == null)
-            {
-                return HttpNotFound();
-            }
-            return View(review);
+
+            return this.PartialView(rvms);
         }
 
         // GET: Reviews/Create
         public ActionResult Create()
         {
-            return View();
+            return this.PartialView();
         }
 
         // POST: Reviews/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Title,StarRating,ReviewText,WorthVisiting,Date")] Review review)
+        public ActionResult Create(CreateReviewBm bind, int attractionId)
         {
-            if (ModelState.IsValid)
+            string userName = this.User.Identity.Name;
+
+            if (this.ModelState.IsValid)
             {
-                db.Reviews.Add(review);
-                db.SaveChanges();
-                return RedirectToAction("Reviews");
+                this.service.CreateReview(bind, attractionId, userName);
+                return this.RedirectToAction("Details", "Attractions", new { id = bind.AttractionId });
             }
 
-            return View(review);
-        }
-
-        // GET: Reviews/Edit/5
-        public ActionResult Edit(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Review review = db.Reviews.Find(id);
-            if (review == null)
-            {
-                return HttpNotFound();
-            }
-            return View(review);
-        }
-
-        // POST: Reviews/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Title,StarRating,ReviewText,WorthVisiting,Date")] Review review)
-        {
-            if (ModelState.IsValid)
-            {
-                db.Entry(review).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Reviews");
-            }
-            return View(review);
+            return this.View();
         }
 
         // GET: Reviews/Delete/5
