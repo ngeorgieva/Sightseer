@@ -40,7 +40,7 @@
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
 
-            AttractionDetailsVm vm = this.service.GetDetails((int) id);
+            AttractionDetailsVm vm = this.service.GetAttractionDetailsVm((int) id);
 
             if (vm == null)
             {
@@ -105,7 +105,7 @@
                 return this.RedirectToAction("Details", new { id = bind.Id });
             }
 
-            return this.View();
+            return this.View(this.service.GetEditAttractionVm(bind.Id));
         }
 
         // GET: Attractions/Delete/5
@@ -115,12 +115,15 @@
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Attraction attraction = db.Attractions.Find(id);
-            if (attraction == null)
+
+            var vm = this.service.GetAttractionDetailsVm((int)id);
+
+            if (vm == null)
             {
-                return HttpNotFound();
+                return this.HttpNotFound();
             }
-            return View(attraction);
+
+            return this.View(vm);
         }
 
         // POST: Attractions/Delete/5
@@ -128,10 +131,8 @@
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Attraction attraction = db.Attractions.Find(id);
-            db.Attractions.Remove(attraction);
-            db.SaveChanges();
-            return RedirectToAction("Index");
+            this.service.DeleteAttraction(id);
+            return this.RedirectToAction("Index");
         }
 
         // GET: attractions/attractionImage/{id}

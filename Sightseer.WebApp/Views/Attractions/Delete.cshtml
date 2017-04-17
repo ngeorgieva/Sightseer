@@ -1,4 +1,4 @@
-﻿@model Sightseer.Models.EntityModels.Attraction
+﻿@model Sightseer.Models.ViewModels.Attractions.AttractionDetailsVm
 
 @{
     ViewBag.Title = "Delete";
@@ -20,11 +20,43 @@
         </dd>
 
         <dt>
+            @Html.DisplayNameFor(model => model.AddressFirstLine)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AddressFirstLine)
+        </dd>
+        
+        <dt>
+            @Html.DisplayNameFor(model => model.Postcode)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Postcode)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Town)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Town)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Country)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Country)
+        </dd>
+
+        <dt>
             @Html.DisplayNameFor(model => model.Image)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Image)
+            <img id="detailsViewAttractionImage" alt="Image" src="@Url.Content("/Attractions/AttractionImage?id=" + Model.Id)" />
         </dd>
 
         <dt>

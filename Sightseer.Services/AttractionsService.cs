@@ -12,7 +12,7 @@
 
     public class AttractionsService : Service
     {
-        public AttractionDetailsVm GetDetails(int id)
+        public AttractionDetailsVm GetAttractionDetailsVm(int id)
         {
             Attraction attraction = this.Context.Attractions.Find(id);
 
@@ -106,6 +106,19 @@
             if (file != null)
             {
                 attraction.Image = this.GetImageFromBind(file);
+            }
+
+            this.Context.SaveChanges();
+        }
+
+        public void DeleteAttraction(int id)
+        {
+            var attraction = this.Context.Attractions.Find(id);
+
+            var reviews = new List<Review>(attraction.Reviews);
+            foreach (var review in reviews)
+            {
+                this.Context.Reviews.Remove(review);
             }
 
             this.Context.SaveChanges();

@@ -10,6 +10,7 @@
 
         public string Name { get; set; }
 
+        [Display(Name = "Address")]
         public string AddressFirstLine { get; set; }
 
         public string Postcode { get; set; }
