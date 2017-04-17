@@ -37,6 +37,12 @@
                 expression.CreateMap<ApplicationUser, EditUserProfiveVm>()
                 .ForMember(dest => dest.Town, opts => opts.MapFrom(src => src.Town.Name))
                 .ForMember(dest => dest.Country, opts => opts.MapFrom(src => src.Town.Country.Name));
+
+                expression.CreateMap<Attraction, EditAttractionVm>()
+               .ForMember(desc => desc.AddressFirstLine, opts => opts.MapFrom(src => src.Address.FirstLine))
+               .ForMember(desc => desc.Postcode, opts => opts.MapFrom(src => src.Address.Postcode))
+               .ForMember(dest => dest.Town, opts => opts.MapFrom(src => src.Address.Town.Name))
+               .ForMember(dest => dest.Country, opts => opts.MapFrom(src => src.Address.Town.Country.Name));
             });
         }
     }

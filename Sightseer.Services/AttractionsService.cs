@@ -1,6 +1,7 @@
 ﻿namespace Sightseer.Services
 {
     using System.Collections.Generic;
+    using System.Data.Entity;
     using System.IO;
     using System.Linq;
     using System.Web;
@@ -65,26 +66,61 @@
             this.Context.SaveChanges();
         }
 
-        private byte[] GetImageFromBind(HttpPostedFileBase bindImage)
+        public EditAttractionVm GetEditAttractionVm(int id)
         {
-            if (bindImage != null)
+            var attraction = this.Context.Attractions.Find(id);
+            if (attraction != null)
             {
-                var fileName = Path.GetFileName(bindImage.FileName);
-                byte[] bytes = new byte[bindImage.ContentLength];
-                int bytesToRead = (int)bindImage.ContentLength;
-                int bytesRead = 0;
-                while (bytesToRead > 0)
-                {
-                    int n = bindImage.InputStream.Read(bytes, bytesRead, bytesToRead);
-                    if (n == 0) break;
-                    bytesRead += n;
-                    bytesToRead -= n;
-                }
-
-                return bytes;
+                var vm = Mapper.Map<Attraction, EditAttractionVm>(attraction);
+                return vm;
             }
 
             return null;
+        }
+
+        public void EditAttraction(EditAttractionBm bind, HttpPostedFileBase file)
+        {
+            var attraction = this.Context.Attractions.Find(bind.Id);
+            attraction.Name = bind.Name;
+            attraction.Description = bind.Description;
+
+            if (bind.Town != null)
+            {
+                var address = this.GetAddress(bind.AddressFirstLine, bind.Postcode, bind.Town, bind.Country);
+                if (address == null)
+                {
+                    attraction.Address = new Address()
+                    {
+                        FirstLine = bind.AddressFirstLine,
+                        Postcode = bind.Postcode,
+                        Town = this.GetAttractionLocation(bind.Town, bind.Country)
+                    };
+                }
+                else
+                {
+                    attraction.Address = address;
+                }
+                
+            }
+
+            if (file != null)
+            {
+                attraction.Image = this.GetImageFromBind(file);
+            }
+
+            this.Context.SaveChanges();
+        }
+
+        private Address GetAddress(string addressFirstLine, string postcode, string town, string country)
+        {
+            var address = this.Context.Addresses.FirstOrDefault(
+                a =>
+                    a.FirstLine == addressFirstLine
+                    && a.Postcode == postcode
+                    && a.Town.Name == town
+                    && a.Town.Country.Name == country);
+
+            return address;
         }
 
         private Town GetAttractionLocation(string townName, string countryName)
@@ -103,6 +139,28 @@
                 }
 
                 return town;
+            }
+
+            return null;
+        }
+
+        private byte[] GetImageFromBind(HttpPostedFileBase bindImage)
+        {
+            if (bindImage != null)
+            {
+                var fileName = Path.GetFileName(bindImage.FileName);
+                byte[] bytes = new byte[bindImage.ContentLength];
+                int bytesToRead = (int)bindImage.ContentLength;
+                int bytesRead = 0;
+                while (bytesToRead > 0)
+                {
+                    int n = bindImage.InputStream.Read(bytes, bytesRead, bytesToRead);
+                    if (n == 0) break;
+                    bytesRead += n;
+                    bytesToRead -= n;
+                }
+
+                return bytes;
             }
 
             return null;

@@ -81,12 +81,14 @@
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Attraction attraction = db.Attractions.Find(id);
-            if (attraction == null)
+
+            EditAttractionVm vm = this.service.GetEditAttractionVm((int)id);
+            if (vm == null)
             {
-                return HttpNotFound();
+                return this.HttpNotFound();
             }
-            return View(attraction);
+
+            return this.View(vm);
         }
 
         // POST: Attractions/Edit/5
@@ -95,15 +97,15 @@
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize(Roles = "Admin,Traveller")]
-        public ActionResult Edit([Bind(Include = "Id,Name,Image,Description")] Attraction attraction)
+        public ActionResult Edit(EditAttractionBm bind, HttpPostedFileBase file)
         {
             if (this.ModelState.IsValid)
             {
-                db.Entry(attraction).State = EntityState.Modified;
-                db.SaveChanges();
-                return this.RedirectToAction("Index");
+                this.service.EditAttraction(bind, file);
+                return this.RedirectToAction("Details", new { id = bind.Id });
             }
-            return this.View(attraction);
+
+            return this.View();
         }
 
         // GET: Attractions/Delete/5
