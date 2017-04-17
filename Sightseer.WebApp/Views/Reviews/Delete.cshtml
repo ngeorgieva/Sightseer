@@ -1,4 +1,4 @@
-﻿@model Sightseer.Models.EntityModels.Review
+﻿@model Sightseer.Models.ViewModels.Reviews.ReviewVm
 
 @{
     ViewBag.Title = "Delete";
@@ -57,8 +57,7 @@
         @Html.AntiForgeryToken()
 
         <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Back to List", "Reviews")
+            <input type="submit" value="Delete" class="btn btn-default" />
         </div>
     }
 </div>

@@ -41,5 +41,33 @@
             this.Context.Reviews.Add(review);
             this.Context.SaveChanges();
         }
+
+        public ReviewVm GetDeleteReviewVm(int id)
+        {
+            var review = this.Context.Reviews.Find(id);
+            ReviewVm drvm = Mapper.Map<Review, ReviewVm>(review);
+
+            return drvm;
+        }
+
+        public int DeleteReview(int id)
+        {
+            var review = this.Context.Reviews.Find(id);
+            int attrId = 0;
+            if (review != null)
+            {
+                attrId = review.Attraction.Id;
+                this.Context.Reviews.Remove(review);
+                this.Context.SaveChanges();
+            }
+
+            return attrId;
+        }
+
+        public void Dispose()
+        {
+            this.Context.Dispose();
+        }
     }
 }
+

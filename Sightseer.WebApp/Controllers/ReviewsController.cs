@@ -1,18 +1,14 @@
 ﻿namespace Sightseer.WebApp.Controllers
 {
     using System.Collections.Generic;
-    using System.Data.Entity;
     using System.Net;
     using System.Web.Mvc;
     using Models.BindingModels;
-    using Models.EntityModels;
     using Models.ViewModels.Reviews;
     using Services;
-    using SightSeer.Data;
 
     public class ReviewsController : Controller
     {
-        private SightseerContext db = new SightseerContext();
         private ReviewsService service = new ReviewsService();
         
         public ActionResult Reviews(int? attractionId)
@@ -61,12 +57,14 @@
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Review review = db.Reviews.Find(id);
-            if (review == null)
+
+            ReviewVm rvm = this.service.GetDeleteReviewVm((int) id);
+
+            if (rvm == null)
             {
-                return HttpNotFound();
+                return this.HttpNotFound();
             }
-            return View(review);
+            return this.View(rvm);
         }
 
         // POST: Reviews/Delete/5
@@ -74,18 +72,14 @@
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Review review = db.Reviews.Find(id);
-            db.Reviews.Remove(review);
-            db.SaveChanges();
-            return RedirectToAction("Reviews");
+            //TODO: Make this one better!
+            int attractionId = this.service.DeleteReview(id);
+            return this.RedirectToAction("Details", "Attractions", new { id = attractionId });
         }
 
         protected override void Dispose(bool disposing)
         {
-            if (disposing)
-            {
-                db.Dispose();
-            }
+            this.service.Dispose();
             base.Dispose(disposing);
         }
     }
