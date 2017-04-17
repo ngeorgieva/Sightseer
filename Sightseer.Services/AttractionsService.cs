@@ -124,6 +124,11 @@
             this.Context.SaveChanges();
         }
 
+        public void Dispose()
+        {
+            this.Context.Dispose();
+        }
+
         private Address GetAddress(string addressFirstLine, string postcode, string town, string country)
         {
             var address = this.Context.Addresses.FirstOrDefault(

@@ -1,7 +1,6 @@
 ﻿namespace Sightseer.WebApp.Controllers
 {
     using System.Collections.Generic;
-    using System.Data.Entity;
     using System.Net;
     using System.Web;
     using System.Web.Mvc;
@@ -9,13 +8,11 @@
     using Models.EntityModels;
     using Models.ViewModels.Attractions;
     using Services;
-    using SightSeer.Data;
 
     [RoutePrefix("attractions")]
     public class AttractionsController : Controller
     {
         private AttractionsService service;
-        private SightseerContext db = new SightseerContext();
 
         public AttractionsController()
         {
@@ -57,8 +54,6 @@
         }
 
         // POST: Attractions/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize(Roles = "Admin,Traveller")]
@@ -92,8 +87,6 @@
         }
 
         // POST: Attractions/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize(Roles = "Admin,Traveller")]
@@ -109,6 +102,7 @@
         }
 
         // GET: Attractions/Delete/5
+        [Authorize(Roles = "Admin,Traveller")]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -129,13 +123,14 @@
         // POST: Attractions/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin,Traveller")]
         public ActionResult DeleteConfirmed(int id)
         {
             this.service.DeleteAttraction(id);
             return this.RedirectToAction("Index");
         }
 
-        // GET: attractions/attractionImage/{id}
+        // GET: Attractions/AttractionImage/{id}
         public ActionResult AttractionImage(int? id)
         {
             if (id == null)
@@ -152,7 +147,7 @@
         {
             if (disposing)
             {
-                this.db.Dispose();
+                this.service.Dispose();
             }
             base.Dispose(disposing);
         }
