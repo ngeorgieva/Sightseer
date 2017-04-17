@@ -65,7 +65,14 @@
         <dd>
             @Html.DisplayFor(model => model.Description)
         </dd>
-
+        
+        <dt>
+            @Html.DisplayNameFor(model => model.Reviews)
+        </dt>
+        
+        <dd>
+            @Html.Action("Reviews", "Reviews", new { attractionId = Model.Id })
+        </dd>
     </dl>
 </div>
 <p>

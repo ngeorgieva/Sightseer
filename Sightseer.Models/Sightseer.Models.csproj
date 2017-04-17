@@ -115,6 +115,7 @@
     <Compile Include="ViewModels\Account\SendCodeViewModel.cs" />
     <Compile Include="ViewModels\Attractions\CreateAttractionVm.cs" />
     <Compile Include="ViewModels\Attractions\EditAttractionVm.cs" />
+    <Compile Include="ViewModels\Reviews\ReviewVm.cs" />
     <Compile Include="ViewModels\Users\EditUserProfiveVm.cs" />
     <Compile Include="ViewModels\Users\UserProfileVm.cs" />
     <Compile Include="ViewModels\Account\VerifyCodeViewModel.cs" />

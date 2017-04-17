@@ -62,6 +62,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ReviewsService.cs" />
     <Compile Include="UserService.cs" />
     <Compile Include="AttractionsService.cs" />
     <Compile Include="HomeService.cs" />
