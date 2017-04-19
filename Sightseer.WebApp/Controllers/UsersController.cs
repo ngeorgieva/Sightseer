@@ -24,7 +24,7 @@
         }
 
         [HttpGet]
-        [Route("editprofile")]
+        [Route("profile/edit")]
         public ActionResult EditProfile()
         {
             string username = this.User.Identity.Name;
@@ -34,7 +34,7 @@
         }
 
         [HttpPost]
-        [Route("editprofile")]
+        [Route("profile/edit")]
         public ActionResult EditProfile(EditUserBm bind)
         {
             string username = this.User.Identity.Name;

@@ -200,6 +200,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\AdminController.cs" />
     <Compile Include="Attributes\MyAuthorizeAttribute.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AttractionsController.cs" />
@@ -226,6 +227,10 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Areas\Admin\Views\web.config" />
+    <Content Include="Areas\Admin\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\Admin\Views\Admin\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Admin\DeleteUser.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -274,7 +279,7 @@
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Attractions\Create.cshtml" />
-    <Content Include="Views\Attractions\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\Admin\Delete.cshtml" />
     <Content Include="Views\Attractions\Details.cshtml" />
     <Content Include="Views\Attractions\Edit.cshtml" />
     <Content Include="Views\Attractions\Index.cshtml" />
@@ -287,8 +292,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Areas\Admin\Controllers\" />
-    <Folder Include="Areas\Admin\Views\Shared\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -299,9 +302,9 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\SightSeer.Data\SightSeer.Data.csproj">
+    <ProjectReference Include="..\SightSeer.Data\Sightseer.Data.csproj">
       <Project>{7F675417-0FE3-41AB-AF02-85855334BD83}</Project>
-      <Name>SightSeer.Data</Name>
+      <Name>Sightseer.Data</Name>
     </ProjectReference>
     <ProjectReference Include="..\Sightseer.Models\Sightseer.Models.csproj">
       <Project>{E8483CBD-B191-4ADC-8CCA-24EDD972ACA1}</Project>

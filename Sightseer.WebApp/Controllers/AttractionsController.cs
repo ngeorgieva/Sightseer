@@ -101,35 +101,6 @@
             return this.View(this.service.GetEditAttractionVm(bind.Id));
         }
 
-        // GET: Attractions/Delete/5
-        [Authorize(Roles = "Admin,Traveller")]
-        public ActionResult Delete(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-
-            var vm = this.service.GetAttractionDetailsVm((int)id);
-
-            if (vm == null)
-            {
-                return this.HttpNotFound();
-            }
-
-            return this.View(vm);
-        }
-
-        // POST: Attractions/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        [Authorize(Roles = "Admin,Traveller")]
-        public ActionResult DeleteConfirmed(int id)
-        {
-            this.service.DeleteAttraction(id);
-            return this.RedirectToAction("Index");
-        }
-
         // GET: Attractions/AttractionImage/{id}
         public ActionResult AttractionImage(int? id)
         {

@@ -98,6 +98,7 @@
     <Compile Include="BindingModels\CreateReviewBm.cs" />
     <Compile Include="BindingModels\EditAttractionBm.cs" />
     <Compile Include="BindingModels\EditUserBm.cs" />
+    <Compile Include="BindingModels\EditUserByAdminBm.cs" />
     <Compile Include="EntityModels\Address.cs" />
     <Compile Include="EntityModels\ApplicationUser.cs" />
     <Compile Include="EntityModels\Continent.cs" />
@@ -114,6 +115,8 @@
     <Compile Include="ViewModels\Account\RegisterViewModel.cs" />
     <Compile Include="ViewModels\Account\ResetPasswordViewModel.cs" />
     <Compile Include="ViewModels\Account\SendCodeViewModel.cs" />
+    <Compile Include="ViewModels\Admin\AdminPageUserVm.cs" />
+    <Compile Include="ViewModels\Admin\AdminPageVm.cs" />
     <Compile Include="ViewModels\Attractions\CreateAttractionVm.cs" />
     <Compile Include="ViewModels\Attractions\EditAttractionVm.cs" />
     <Compile Include="ViewModels\Reviews\ReviewVm.cs" />

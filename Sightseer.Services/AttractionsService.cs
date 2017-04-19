@@ -1,7 +1,6 @@
 ﻿namespace Sightseer.Services
 {
     using System.Collections.Generic;
-    using System.Data.Entity;
     using System.IO;
     using System.Linq;
     using System.Web;
@@ -106,19 +105,6 @@
             if (file != null)
             {
                 attraction.Image = this.GetImageFromBind(file);
-            }
-
-            this.Context.SaveChanges();
-        }
-
-        public void DeleteAttraction(int id)
-        {
-            var attraction = this.Context.Attractions.Find(id);
-
-            var reviews = new List<Review>(attraction.Reviews);
-            foreach (var review in reviews)
-            {
-                this.Context.Reviews.Remove(review);
             }
 
             this.Context.SaveChanges();

@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sightseer.Models", "Sightse
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sightseer.WebApp", "Sightseer.WebApp\Sightseer.WebApp.csproj", "{278F9CF9-9A7C-47C9-BC08-F3F4573DE739}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SightSeer.Data", "SightSeer.Data\SightSeer.Data.csproj", "{7F675417-0FE3-41AB-AF02-85855334BD83}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sightseer.Data", "SightSeer.Data\Sightseer.Data.csproj", "{7F675417-0FE3-41AB-AF02-85855334BD83}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sightseer.Services", "Sightseer.Services\Sightseer.Services.csproj", "{B412760D-CBB6-4B69-8DFC-515E83049B18}"
 EndProject

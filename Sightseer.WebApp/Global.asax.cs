@@ -8,6 +8,7 @@
     using System.Web.Routing;
     using Models.ViewModels;
     using Models.ViewModels.Account;
+    using Models.ViewModels.Admin;
     using Models.ViewModels.Reviews;
     using Models.ViewModels.Users;
 
@@ -49,6 +50,8 @@
                 expression.CreateMap<Review, ReviewVm>()
                     .ForMember(desc => desc.Author, opts => opts.MapFrom(src => src.Author.UserName))
                     .ForMember(desc => desc.Attraction, opts => opts.MapFrom(src => src.Attraction.Id));
+
+                expression.CreateMap<ApplicationUser, AdminPageUserVm>();
             });
         }
     }
