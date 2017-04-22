@@ -319,9 +319,9 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\SightSeer.Data\SightSeer.Data.csproj">
+    <ProjectReference Include="..\Sightseer.Data\Sightseer.Data.csproj">
       <Project>{7F675417-0FE3-41AB-AF02-85855334BD83}</Project>
-      <Name>SightSeer.Data</Name>
+      <Name>Sightseer.Data</Name>
     </ProjectReference>
     <ProjectReference Include="..\Sightseer.Models\Sightseer.Models.csproj">
       <Project>{E8483CBD-B191-4ADC-8CCA-24EDD972ACA1}</Project>

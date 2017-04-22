@@ -7,8 +7,8 @@
     <ProjectGuid>{7F675417-0FE3-41AB-AF02-85855334BD83}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>SightSeer.Data</RootNamespace>
-    <AssemblyName>SightSeer.Data</AssemblyName>
+    <RootNamespace>Sightseer.Data</RootNamespace>
+    <AssemblyName>Sightseer.Data</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>

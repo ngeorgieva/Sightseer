@@ -76,9 +76,9 @@
     <Compile Include="Service.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\SightSeer.Data\SightSeer.Data.csproj">
+    <ProjectReference Include="..\Sightseer.Data\Sightseer.Data.csproj">
       <Project>{7f675417-0fe3-41ab-af02-85855334bd83}</Project>
-      <Name>SightSeer.Data</Name>
+      <Name>Sightseer.Data</Name>
     </ProjectReference>
     <ProjectReference Include="..\Sightseer.Models\Sightseer.Models.csproj">
       <Project>{e8483cbd-b191-4adc-8cca-24edd972aca1}</Project>

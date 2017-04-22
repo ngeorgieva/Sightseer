@@ -7,6 +7,7 @@
     using Models.EntityModels;
     using Models.ViewModels.Admin;
     using Models.ViewModels.Attractions;
+    using Sightseer.Data;
 
     public class AdminService : Service, IAdminService
     {

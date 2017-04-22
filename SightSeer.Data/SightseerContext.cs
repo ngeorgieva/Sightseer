@@ -1,4 +1,4 @@
-namespace SightSeer.Data
+namespace Sightseer.Data
 {
     using System.Data.Entity;
     using Microsoft.AspNet.Identity.EntityFramework;

@@ -1,4 +1,4 @@
-﻿namespace SightSeer.Data.Migrations
+﻿namespace Sightseer.Data.Migrations
 {
     using System;
     using System.Collections.Generic;
@@ -11,6 +11,7 @@
     using System.Text;
     using Microsoft.AspNet.Identity;
     using Microsoft.AspNet.Identity.EntityFramework;
+    using Sightseer.Data;
     using Sightseer.Models.EntityModels;
 
     internal sealed class Configuration : DbMigrationsConfiguration<SightseerContext>

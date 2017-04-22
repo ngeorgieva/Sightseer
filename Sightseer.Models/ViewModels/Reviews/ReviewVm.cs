@@ -10,12 +10,14 @@
 
         public string Title { get; set; }
 
+        [Display(Name = "Rating")]
         public int StarRating { get; set; }
 
         [Required]
-        [DataType(DataType.MultilineText)]
+        [Display(Name = "Review Text")]
         public string ReviewText { get; set; }
 
+        [Display(Name = "Worth Visiting")]
         public bool WorthVisiting { get; set; }
 
         [DataType(DataType.Date)]

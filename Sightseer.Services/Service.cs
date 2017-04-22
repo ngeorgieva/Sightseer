@@ -1,6 +1,6 @@
 ﻿namespace Sightseer.Services
 {
-    using SightSeer.Data;
+    using Sightseer.Data;
 
     public abstract class Service
     {

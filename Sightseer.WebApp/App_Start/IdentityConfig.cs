@@ -9,7 +9,7 @@
     using Microsoft.AspNet.Identity.Owin;
     using Microsoft.Owin;
     using Microsoft.Owin.Security;
-    using SightSeer.Data;
+    using Sightseer.Data;
 
     public class EmailService : IIdentityMessageService
     {
