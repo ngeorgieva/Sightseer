@@ -5,11 +5,16 @@
     using System.Web.Mvc;
     using Models.BindingModels;
     using Models.ViewModels.Reviews;
-    using Services;
+    using Services.Interfaces;
 
     public class ReviewsController : Controller
     {
-        private ReviewsService service = new ReviewsService();
+        private IReviewsService service;
+
+        public ReviewsController(IReviewsService service)
+        {
+            this.service = service;
+        }
         
         public ActionResult Reviews(int? attractionId)
         {

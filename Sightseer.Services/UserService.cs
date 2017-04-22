@@ -1,16 +1,15 @@
 ﻿namespace Sightseer.Services
 {
-    using System;
     using System.Collections.Generic;
     using System.Linq;
     using AutoMapper;
+    using Interfaces;
     using Models.BindingModels;
     using Models.EntityModels;
-    using Models.ViewModels.Account;
     using Models.ViewModels.Attractions;
     using Models.ViewModels.Users;
 
-    public class UserService : Service
+    public class UserService : Service, IUserService
     {
         public UserProfileVm GetUserProfile(string userName)
         {

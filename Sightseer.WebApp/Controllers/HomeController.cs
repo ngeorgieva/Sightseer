@@ -4,14 +4,15 @@
     using System.Web.Mvc;
     using Models.ViewModels.Attractions;
     using Services;
+    using Services.Interfaces;
 
     public class HomeController : Controller
     {
-        private HomeService service;
+        private IHomeService service;
 
-        public HomeController()
+        public HomeController(IHomeService service)
         {
-            this.service = new HomeService();
+            this.service = service;
         }
 
         [AllowAnonymous]

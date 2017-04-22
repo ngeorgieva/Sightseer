@@ -63,6 +63,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AdminService.cs" />
+    <Compile Include="Interfaces\IAttractionsService.cs" />
+    <Compile Include="Interfaces\IAdminService.cs" />
+    <Compile Include="Interfaces\IHomeService.cs" />
+    <Compile Include="Interfaces\IReviewsService.cs" />
+    <Compile Include="Interfaces\IUserService.cs" />
     <Compile Include="ReviewsService.cs" />
     <Compile Include="UserService.cs" />
     <Compile Include="AttractionsService.cs" />
@@ -71,9 +76,9 @@
     <Compile Include="Service.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\SightSeer.Data\Sightseer.Data.csproj">
+    <ProjectReference Include="..\SightSeer.Data\SightSeer.Data.csproj">
       <Project>{7f675417-0fe3-41ab-af02-85855334bd83}</Project>
-      <Name>Sightseer.Data</Name>
+      <Name>SightSeer.Data</Name>
     </ProjectReference>
     <ProjectReference Include="..\Sightseer.Models\Sightseer.Models.csproj">
       <Project>{e8483cbd-b191-4adc-8cca-24edd972aca1}</Project>
@@ -84,6 +89,7 @@
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -3,10 +3,11 @@
     using System.Collections.Generic;
     using System.Linq;
     using AutoMapper;
+    using Interfaces;
     using Models.EntityModels;
     using Models.ViewModels.Attractions;
 
-    public class HomeService : Service
+    public class HomeService : Service, IHomeService
     {
         public IEnumerable<AttractionVm> GetTopAttractions()
         {

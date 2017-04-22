@@ -7,16 +7,16 @@
     using Models.BindingModels;
     using Models.EntityModels;
     using Models.ViewModels.Attractions;
-    using Services;
+    using Services.Interfaces;
 
     [RoutePrefix("attractions")]
     public class AttractionsController : Controller
     {
-        private AttractionsService service;
+        private IAttractionsService service;
 
-        public AttractionsController()
+        public AttractionsController(IAttractionsService service)
         {
-            this.service = new AttractionsService();
+            this.service = service;
         }
 
         // GET: Attractions

@@ -3,11 +3,12 @@
     using System.Collections.Generic;
     using System.Linq;
     using AutoMapper;
+    using Interfaces;
     using Models.BindingModels;
     using Models.EntityModels;
     using Models.ViewModels.Reviews;
 
-    public class ReviewsService : Service
+    public class ReviewsService : Service, IReviewsService
     {
         public IEnumerable<ReviewVm> GetAllReviewsForAttraction(int attractionId)
         {

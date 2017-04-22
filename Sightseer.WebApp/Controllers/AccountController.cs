@@ -1,6 +1,7 @@
 ﻿namespace Sightseer.WebApp.Controllers
 {
     using System.Linq;
+    using System.Net;
     using System.Threading.Tasks;
     using System.Web;
     using System.Web.Mvc;

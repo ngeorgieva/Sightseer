@@ -3,12 +3,12 @@
     using System.Collections.Generic;
     using System.Linq;
     using AutoMapper;
+    using Interfaces;
     using Models.EntityModels;
     using Models.ViewModels.Admin;
     using Models.ViewModels.Attractions;
-    using Models.ViewModels.Users;
 
-    public class AdminService : Service
+    public class AdminService : Service, IAdminService
     {
         public AdminPageVm GetAdminPageVm()
         {

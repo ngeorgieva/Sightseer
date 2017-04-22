@@ -5,11 +5,12 @@
     using System.Linq;
     using System.Web;
     using AutoMapper;
+    using Interfaces;
     using Models.BindingModels;
     using Models.EntityModels;
     using Models.ViewModels.Attractions;
 
-    public class AttractionsService : Service
+    public class AttractionsService : Service, IAttractionsService
     {
         public AttractionDetailsVm GetAttractionDetailsVm(int id)
         {

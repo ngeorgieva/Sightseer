@@ -4,14 +4,15 @@
     using Models.BindingModels;
     using Models.ViewModels.Users;
     using Services;
+    using Services.Interfaces;
 
     public class UsersController : Controller
     {
-        private UserService service;
+        private IUserService service;
 
-        public UsersController()
+        public UsersController(IUserService service)
         {
-            this.service = new UserService();
+            this.service = service;
         }
 
         [Route("profile")]
