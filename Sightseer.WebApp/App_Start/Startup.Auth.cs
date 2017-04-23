@@ -8,6 +8,7 @@ using Owin;
 namespace Sightseer.WebApp
 {
     using Data;
+    using Microsoft.Owin.Security.Google;
     using Sightseer.Models.EntityModels;
 
     public partial class Startup
@@ -59,11 +60,11 @@ namespace Sightseer.WebApp
             //   appId: "",
             //   appSecret: "");
 
-            //app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
-            //{
-            //    ClientId = "",
-            //    ClientSecret = ""
-            //});
+            app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
+            {
+                ClientId = "923941816016-jrv4gt99m6a8svn9krvhvhk8u30hif3i.apps.googleusercontent.com",
+                ClientSecret = "FhOyJrH_00HnoMfC8awAVn7T"
+            });
         }
     }
 }

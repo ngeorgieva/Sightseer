@@ -6,6 +6,7 @@
     using Services;
     using Services.Interfaces;
 
+    [RequireHttps]
     public class HomeController : Controller
     {
         private IHomeService service;
