@@ -21,9 +21,9 @@
 
         // GET: Attractions
         [AllowAnonymous]
-        public ActionResult Index()
+        public ActionResult Index(int? page)
         {
-            IEnumerable<AttractionVm> avm = this.service.GetAllAttractions();
+            IEnumerable<AttractionVm> avm = this.service.GetAllAttractions(page);
             return this.View(avm);
         }
 

@@ -11,6 +11,7 @@
     using Models.ViewModels.Admin;
     using Models.ViewModels.Reviews;
     using Models.ViewModels.Users;
+    using PagedList;
 
     public class MvcApplication : System.Web.HttpApplication
     {

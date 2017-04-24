@@ -9,6 +9,8 @@
     using Models.BindingModels;
     using Models.EntityModels;
     using Models.ViewModels.Attractions;
+    using PagedList;
+    using Utils;
 
     public class AttractionsService : Service, IAttractionsService
     {
@@ -32,12 +34,14 @@
             return attr;
         }
 
-        public IEnumerable<AttractionVm> GetAllAttractions()
+        public IEnumerable<AttractionVm> GetAllAttractions(int? page)
         {
             IEnumerable<Attraction> attractions = this.Context.Attractions.OrderByDescending(a => a.Rating);
-            IEnumerable<AttractionVm> avms = Mapper.Map<IEnumerable<Attraction>, IEnumerable<AttractionVm>>(attractions);
+            var pageNumber = page ?? 1;
+            var onePageOfAttractions = attractions.ToPagedList(pageNumber, 2).ToMappedPagedList<Attraction, AttractionVm>();
+            //IPagedList<AttractionVm> avms = Mapper.Map<IPagedList<Attraction>, IPagedList<AttractionVm>>(onePageOfAttractions);
 
-            return avms;
+            return onePageOfAttractions;
         }
 
         public void CreateAttraction(CreateAttractionBm bind, HttpPostedFileBase file)
