@@ -1,5 +1,6 @@
 ﻿namespace Sightseer.Services
 {
+    using System;
     using System.Collections.Generic;
     using System.Linq;
     using AutoMapper;
@@ -38,8 +39,9 @@
                 Attraction = attraction,
                 Author = user
             };
-
+            
             this.Context.Reviews.Add(review);
+            attraction.Rating = attraction.Reviews.Sum(r => r.StarRating) / (double)attraction.Reviews.Count;
             this.Context.SaveChanges();
         }
 

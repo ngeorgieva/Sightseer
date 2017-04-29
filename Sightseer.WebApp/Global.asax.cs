@@ -17,8 +17,8 @@
     {
         protected void Application_Start()
         {
-            this.ConfigureMappings();
             AreaRegistration.RegisterAllAreas();
+            this.ConfigureMappings();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);

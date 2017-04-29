@@ -9,8 +9,7 @@ namespace Sightseer.WebApp
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
-            //TODO: Make the attribute routing work!
-            //routes.MapMvcAttributeRoutes();
+            routes.MapMvcAttributeRoutes();
 
             routes.MapRoute(
                 name: "Default",

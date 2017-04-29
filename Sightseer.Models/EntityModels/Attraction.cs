@@ -27,6 +27,10 @@
 
         public double Rating { get; set; }
 
+        public string Longitude { get; set; }
+
+        public string Latitude { get; set; }
+
         public virtual ICollection<Review> Reviews
         {
             get { return this.reviews; }

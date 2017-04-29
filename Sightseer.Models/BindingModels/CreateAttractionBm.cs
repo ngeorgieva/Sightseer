@@ -13,8 +13,6 @@
         [DataType(DataType.MultilineText)]
         public string Description { get; set; }
 
-        public HttpPostedFileBase Image { get; set; }
-
         public string AddressFirstLine { get; set; }
 
         public string Postcode { get; set; }
@@ -22,5 +20,9 @@
         public string Town { get; set; }
 
         public string Country { get; set; }
+
+        public string Longitude { get; set; }
+
+        public string Latitude { get; set; }
     }
 }

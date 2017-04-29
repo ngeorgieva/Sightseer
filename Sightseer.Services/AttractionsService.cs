@@ -50,7 +50,9 @@
             {
                 Name = bind.Name,
                 Description = bind.Description,
-                Image = this.GetImageFromBind(file)
+                Image = this.GetImageFromBind(file),
+                Latitude = bind.Latitude,
+                Longitude = bind.Longitude
             };
 
             if (!string.IsNullOrEmpty(bind.Town) && !string.IsNullOrEmpty(bind.Country))

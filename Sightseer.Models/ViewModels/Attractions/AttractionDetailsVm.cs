@@ -26,6 +26,10 @@
 
         public int Rating { get; set; }
 
+        public string Longitude { get; set; }
+
+        public string Latitude { get; set; }
+
         public ICollection<Review> Reviews { get; set; }
     }
 }
