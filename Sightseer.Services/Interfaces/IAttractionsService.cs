@@ -10,7 +10,7 @@
     {
         AttractionDetailsVm GetAttractionDetailsVm(int id);
         Attraction GetAttractionImage(int id);
-        IEnumerable<AttractionVm> GetAllAttractions(int? page);
+        IEnumerable<AttractionVm> GetAllAttractions(int? page, string searchString);
         void CreateAttraction(CreateAttractionBm bind, HttpPostedFileBase file);
         EditAttractionVm GetEditAttractionVm(int id);
         void EditAttraction(EditAttractionBm bind, HttpPostedFileBase file);

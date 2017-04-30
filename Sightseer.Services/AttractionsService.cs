@@ -34,9 +34,19 @@
             return attr;
         }
 
-        public IEnumerable<AttractionVm> GetAllAttractions(int? page)
+        public IEnumerable<AttractionVm> GetAllAttractions(int? page, string searchValue)
         {
-            IEnumerable<Attraction> attractions = this.Context.Attractions.OrderByDescending(a => a.Rating);
+            IEnumerable<Attraction> attractions;
+
+            if (searchValue != null)
+            {
+                attractions = this.Context.Attractions.OrderByDescending(a => a.Rating).Where(a => a.Name.Contains(searchValue));
+            }
+            else
+            {
+                attractions = this.Context.Attractions.OrderByDescending(a => a.Rating);
+            }
+            
             var pageNumber = page ?? 1;
             var onePageOfAttractions = attractions.ToPagedList(pageNumber, 2).ToMappedPagedList<Attraction, AttractionVm>();
             //IPagedList<AttractionVm> avms = Mapper.Map<IPagedList<Attraction>, IPagedList<AttractionVm>>(onePageOfAttractions);
