@@ -42,10 +42,8 @@
         // POST: Reviews/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(CreateReviewBm bind, int attractionId)
+        public ActionResult Create(CreateReviewBm bind, int attractionId, string userName)
         {
-            string userName = this.User.Identity.Name;
-
             if (this.ModelState.IsValid)
             {
                 this.service.CreateReview(bind, attractionId, userName);
@@ -69,6 +67,7 @@
             {
                 return this.HttpNotFound();
             }
+
             return this.View(rvm);
         }
 

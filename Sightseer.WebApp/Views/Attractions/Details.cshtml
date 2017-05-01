@@ -74,7 +74,7 @@
             @Html.Action("Reviews", "Reviews", new { attractionId = Model.Id })
 
             <div id="writa-a-review-form-@Model.Id">
-                @Ajax.ActionLink("Review Attraction »", "Create", "Reviews", new { attractionId = Model.Id }, new AjaxOptions
+                @Ajax.ActionLink("Review Attraction »", "Create", "Reviews", new { attractionId = Model.Id, username = User.Identity.Name }, new AjaxOptions
            {
                InsertionMode = InsertionMode.Replace,
                UpdateTargetId = "writa-a-review-form-" + Model.Id
