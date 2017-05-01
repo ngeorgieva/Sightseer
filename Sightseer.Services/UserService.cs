@@ -86,17 +86,5 @@
 
             return null;
         }
-
-        //public bool IsUsernameUnique(string newUsername, string username)
-        //{
-        //    ApplicationUser user = this.Context.Users.FirstOrDefault(u => u.UserName == username);
-
-        //    if (user.UserName == newUsername)
-        //    {
-        //        return true;
-        //    }
-
-        //    return !this.Context.Users.Any(u => u.UserName == newUsername);
-        //}
     }
 }

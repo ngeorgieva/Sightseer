@@ -1,9 +1,9 @@
 ﻿namespace Sightseer.WebApp.Controllers
 {
+    using System.Net;
     using System.Web.Mvc;
     using Models.BindingModels;
     using Models.ViewModels.Users;
-    using Services;
     using Services.Interfaces;
 
     public class UsersController : Controller
@@ -16,34 +16,49 @@
         }
 
         [Route("profile")]
-        public ActionResult UserProfile()
+        public ActionResult UserProfile(string username)
         {
-            string userName = this.User.Identity.Name;
-            UserProfileVm vm = this.service.GetUserProfile(userName);
+            if (string.IsNullOrEmpty(username))
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            UserProfileVm vm = this.service.GetUserProfile(username);
+
+            if (vm == null)
+            {
+                return this.HttpNotFound();
+            }
 
             return this.View(vm);
         }
 
         [HttpGet]
         [Route("profile/edit")]
-        public ActionResult EditProfile()
+        public ActionResult EditProfile(string username)
         {
-            string username = this.User.Identity.Name;
+            if (string.IsNullOrEmpty(username))
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
             EditUserProfiveVm vm = this.service.GetEditProfileVm(username);
+
+            if (vm == null)
+            {
+                return this.HttpNotFound();
+            }
 
             return this.View(vm);
         }
 
         [HttpPost]
         [Route("profile/edit")]
-        public ActionResult EditProfile(EditUserBm bind)
+        public ActionResult EditProfile(EditUserBm bind, string username)
         {
-            string username = this.User.Identity.Name;
-
             if (this.ModelState.IsValid && this.service.IsEmailUnique(bind.Email, username))
             {
                 this.service.EditUser(bind, username);
-                return this.RedirectToAction("UserProfile");
+                return this.RedirectToAction("UserProfile", new {username = username});
             }
             
             EditUserProfiveVm vm = this.service.GetEditProfileVm(username);
