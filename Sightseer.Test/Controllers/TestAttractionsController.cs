@@ -8,7 +8,7 @@
     using Models.EntityModels;
     using Models.ViewModels.Attractions;
     using Moq;
-    using Services.Interfaces;
+    using Sightseer.Services.Interfaces;
     using TestStack.FluentMVCTesting;
     using WebApp.Controllers;
 

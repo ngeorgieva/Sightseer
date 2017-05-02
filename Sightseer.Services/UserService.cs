@@ -14,6 +14,12 @@
         public UserProfileVm GetUserProfile(string userName)
         {
             ApplicationUser user = this.Context.Users.FirstOrDefault(u => u.UserName == userName);
+
+            if (user == null)
+            {
+                return null; 
+            }
+
             UserProfileVm vm = new UserProfileVm()
             {
                 FirstName = user.FirstName,
@@ -39,8 +45,14 @@
         public EditUserProfiveVm GetEditProfileVm(string username)
         {
             ApplicationUser user = this.Context.Users.FirstOrDefault(u => u.UserName == username);
+
+            if (user == null)
+            {
+                return null;
+            }
+
             EditUserProfiveVm vm = Mapper.Map<ApplicationUser, EditUserProfiveVm>(user);
-            return new EditUserProfiveVm();
+            return vm;
         }
 
         public void EditUser(EditUserBm bind, string username)

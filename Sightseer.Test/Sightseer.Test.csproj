@@ -112,6 +112,7 @@
     <Compile Include="Controllers\TestReviewsController.cs" />
     <Compile Include="Controllers\TestUsersController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\TestUserService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
@@ -131,9 +132,7 @@
       <Name>Sightseer.WebApp</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Services\" />
-  </ItemGroup>
+  <ItemGroup />
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
       <ItemGroup>

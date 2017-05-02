@@ -3,12 +3,11 @@
     using System.Collections.Generic;
     using AutoMapper;
     using Microsoft.VisualStudio.TestTools.UnitTesting;
-    using Services;
-    using Services.Interfaces;
     using TestStack.FluentMVCTesting;
     using WebApp.Controllers;
     using Models.EntityModels;
     using Models.ViewModels.Attractions;
+    using Sightseer.Services;
 
     [TestClass]
     public class TestHomeController

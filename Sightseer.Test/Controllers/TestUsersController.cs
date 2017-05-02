@@ -5,7 +5,7 @@
     using Models.BindingModels;
     using Models.ViewModels.Users;
     using Moq;
-    using Services.Interfaces;
+    using Sightseer.Services.Interfaces;
     using TestStack.FluentMVCTesting;
     using WebApp.Controllers;
 
