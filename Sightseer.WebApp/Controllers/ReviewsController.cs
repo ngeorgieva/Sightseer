@@ -34,6 +34,7 @@
         }
 
         // GET: Reviews/Create
+        [Authorize(Roles = "Admin,Traveller")]
         public ActionResult Create()
         {
             return this.PartialView();
@@ -42,6 +43,7 @@
         // POST: Reviews/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin,Traveller")]
         public ActionResult Create(CreateReviewBm bind, int attractionId, string userName)
         {
             if (this.ModelState.IsValid)
@@ -54,6 +56,7 @@
         }
 
         // GET: Reviews/Delete/5
+        [Authorize(Roles = "Admin")]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -73,6 +76,7 @@
 
         // POST: Reviews/Delete/5
         [HttpPost, ActionName("Delete")]
+        [Authorize(Roles = "Admin")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {

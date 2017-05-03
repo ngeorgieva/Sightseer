@@ -29,7 +29,7 @@
 
         // GET: Attractions/Details/5
         [AllowAnonymous]
-        [HttpGet, Route("attractions/{id}")]
+        [HttpGet, Route("details/{id}")]
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -48,13 +48,14 @@
 
         // GET: Attractions/Create
         [Authorize(Roles = "Admin,Traveller")]
+        [HttpGet, Route("create")]
         public ActionResult Create()
         {
             return this.View();
         }
 
         // POST: Attractions/Create
-        [HttpPost]
+        [HttpPost, Route("create")]
         [ValidateAntiForgeryToken]
         [Authorize(Roles = "Admin,Traveller")]
         public ActionResult Create(CreateAttractionBm bind, HttpPostedFileBase file)
@@ -69,7 +70,8 @@
         }
 
         // GET: Attractions/Edit/5
-        [Authorize(Roles = "Admin,Traveller")]
+        [Authorize(Roles = "Admin")]
+        [HttpGet, Route("edit/{id}")]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -87,9 +89,9 @@
         }
 
         // POST: Attractions/Edit/5
-        [HttpPost]
+        [HttpPost, Route("edit/{id}")]
         [ValidateAntiForgeryToken]
-        [Authorize(Roles = "Admin,Traveller")]
+        [Authorize(Roles = "Admin")]
         public ActionResult Edit(EditAttractionBm bind, HttpPostedFileBase file)
         {
             if (this.ModelState.IsValid)

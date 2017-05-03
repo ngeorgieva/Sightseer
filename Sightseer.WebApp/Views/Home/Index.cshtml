@@ -1,4 +1,5 @@
-﻿@model IEnumerable<Sightseer.Models.ViewModels.Attractions.AttractionVm>
+﻿@using Sightseer.Services.Utils
+@model IEnumerable<Sightseer.Models.ViewModels.Attractions.AttractionVm>
 @{
     ViewBag.Title = "Sightseer";
 }
@@ -15,15 +16,19 @@
     @foreach (var vm in Model)
     {
         <div class="col-md-4">
-            <h2>@vm.Name</h2>
+            <h3>@Html.DisplayFor(model => vm.Name)</h3>
+            <h4><i>@Html.DisplayFor(model => vm.Town), @Html.DisplayFor(model => vm.Country)</i></h4>
+            <div>
+                @if (vm.Image != null)
+                {
+                    <img alt="Attraction Image" src="@Url.Content("/Attractions/AttractionImage/?id=" + vm.Id)" />
+                }
+            </div>
             <p>
-
+                @Utils.CutText(vm.Description, 420);
             </p>
             <p>
-                @vm.Town, @vm.Country
-            </p>
-            <p>
-                @vm.Description
+                <a class="btn btn-default" href="@Url.Content("/attractions/details/?id=" + vm.Id)">Learn more &raquo;</a>
             </p>
         </div>
     }

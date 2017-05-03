@@ -24,8 +24,13 @@ textarea {
 }
 
 .jumbotron {
-    background-image: url('http://www.abercrombiekent.co.uk/portugal/images/Classic-portugal-1.jpg');
+    background-image: url('jumbotron-background1.jpg');
     background-size: cover;
-    height: 480px;
+    height: 350px;
     background-size: 100%;
+}
+
+#top-nav {
+    background-color: black;
+    border-bottom: black;
 }

@@ -4,51 +4,13 @@
     ViewBag.Title = "Attraction Details";
 }
 
-<h2>Details</h2>
+<h2>@Model.Name</h2>
 
 <div>
-    <h4>Attraction</h4>
+    <h5><i>@Model.AddressFirstLine</i></h5>
+    <h5><i>@Model.Town, @Model.Postcode, @Model.Country</i></h5>
     <hr />
     <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Name)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.AddressFirstLine)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.AddressFirstLine)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Town)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Town)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Postcode)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Postcode)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Country)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Country)
-        </dd>
 
         <dt>
             @Html.DisplayNameFor(model => model.Image)
@@ -66,43 +28,68 @@
             @Html.DisplayFor(model => model.Description)
         </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Reviews)
-        </dt>
+        @if (Model.Reviews.Any())
+        {
+            <dt>
+                @Html.DisplayNameFor(model => model.Reviews)
+            </dt>
+        }
+
 
         <dd>
-            @Html.Action("Reviews", "Reviews", new { attractionId = Model.Id })
+            @if (Model.Reviews.Any())
+            {
+                @Html.Action("Reviews", "Reviews", new {attractionId = Model.Id})
+            }
+            else
+            {
+                <br>
+                <p>Be the first to review this attraction!</p>
+            }
 
-            <div id="writa-a-review-form-@Model.Id">
-                @Ajax.ActionLink("Review Attraction »", "Create", "Reviews", new { attractionId = Model.Id, username = User.Identity.Name }, new AjaxOptions
-           {
-               InsertionMode = InsertionMode.Replace,
-               UpdateTargetId = "writa-a-review-form-" + Model.Id
-           }, new { @class = "btn btn-default" })
-            </div>
+            @if (User.Identity.IsAuthenticated)
+            {
+                <div id="writa-a-review-form-@Model.Id">
+                    @Ajax.ActionLink("Review Attraction »", "Create", "Reviews", new {attractionId = Model.Id, username = User.Identity.Name}, new AjaxOptions
+                    {
+                        InsertionMode = InsertionMode.Replace,
+                        UpdateTargetId = "writa-a-review-form-" + Model.Id
+                    }, new {@class = "btn btn-default"})
+                </div>
+            }
+            else
+            {
+                <p>Please @Html.ActionLink("Login", "Login", "Account") to review this attraction!</p>
+            }
+
         </dd>
     </dl>
-    </div>
-    <p>
-        @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-        @Html.ActionLink("Back to List", "Index")
-    </p>
-    <div id="map" style="width: 100%; height: 400px; position: relative;"> </div>
-    @section scripts{
-        <script>
-            function initMap() {
-                var uluru = { lat: @Model.Latitude, lng: @Model.Longitude };
-                var map = new google.maps.Map(document.getElementById('map'), {
-                    zoom: 6,
-                    center: uluru
-                });
-                var marker = new google.maps.Marker({
-                    position: uluru,
-                    map: map
-                });
-            }
-        </script>
-        <script async defer
-                src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDo_lb2Cz9LcjK419yB4BsWtKdSF1PiJ_c&callback=initMap">
-        </script>
+</div>
+<p>
+    @if (User.IsInRole("Admin"))
+    {
+        @Html.ActionLink("Edit", "Edit", new { id = Model.Id })
+        @:|
     }
+    
+    @Html.ActionLink("Back to List", "Index")
+</p>
+<div id="map" style="width: 100%; height: 400px; position: relative;"> </div>
+@section scripts{
+    <script>
+        function initMap() {
+            var uluru = { lat: @Model.Latitude, lng: @Model.Longitude };
+            var map = new google.maps.Map(document.getElementById('map'), {
+                zoom: 6,
+                center: uluru
+            });
+            var marker = new google.maps.Marker({
+                position: uluru,
+                map: map
+            });
+        }
+    </script>
+    <script async defer
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDo_lb2Cz9LcjK419yB4BsWtKdSF1PiJ_c&callback=initMap">
+    </script>
+}
