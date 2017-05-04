@@ -14,10 +14,14 @@
         
         public string Title { get; set; }
 
+        [Display(Name = "Star Rating")]
+        [Range(1, 5, ErrorMessage = "The star rating must be between 1 and 5.")]
         public int StarRating { get; set; }
-        
+
+        [Display(Name = "Review Text")]
         public string ReviewText { get; set; }
 
+        [Display(Name = "Worth Visiting")]
         public bool WorthVisiting { get; set; }
 
         [DataType(DataType.Date)]

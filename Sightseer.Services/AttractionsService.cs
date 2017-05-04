@@ -48,8 +48,7 @@
             }
             
             var pageNumber = page ?? 1;
-            var onePageOfAttractions = attractions.ToPagedList(pageNumber, 2).ToMappedPagedList<Attraction, AttractionVm>();
-            //IPagedList<AttractionVm> avms = Mapper.Map<IPagedList<Attraction>, IPagedList<AttractionVm>>(onePageOfAttractions);
+            var onePageOfAttractions = attractions.ToPagedList(pageNumber, 4).ToMappedPagedList<Attraction, AttractionVm>();
 
             return onePageOfAttractions;
         }

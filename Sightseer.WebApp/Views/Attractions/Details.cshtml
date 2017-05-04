@@ -8,72 +8,60 @@
 
 <div>
     <h5><i>@Model.AddressFirstLine</i></h5>
-    <h5><i>@Model.Town, @Model.Postcode, @Model.Country</i></h5>
+    <h5><i>@Model.Town, @Model.Postcode, @Model.Country</i></h5> <a href="#map" class="btn btn-default">View on map</a>
     <hr />
-    <dl class="dl-horizontal">
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Image)
-        </dt>
-
-        <dd>
+    <div id="imageAndDesc">
+        <div>
             <img id="detailsViewAttractionImage" alt="Image" src="@Url.Content("/Attractions/AttractionImage?id=" + Model.Id)" />
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Description)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Description)
-        </dd>
-
+        </div>
+        <p>@Html.DisplayFor(model => model.Description)</p>
+    </div>
+    <hr />
+    <div>
         @if (Model.Reviews.Any())
         {
-            <dt>
-                @Html.DisplayNameFor(model => model.Reviews)
-            </dt>
+            <h3><b>@Html.DisplayNameFor(model => model.Reviews)</b></h3>
         }
 
-
-        <dd>
-            @if (Model.Reviews.Any())
+        @if (Model.Reviews.Any())
             {
-                @Html.Action("Reviews", "Reviews", new {attractionId = Model.Id})
-            }
-            else
-            {
-                <br>
-                <p>Be the first to review this attraction!</p>
-            }
+            @Html.Action("Reviews", "Reviews", new { attractionId = Model.Id })
+        }
+        else
+        {
+            <br>
+            <p>Be the first to review this attraction!</p>
+        }
 
+        <div id="createReviewButton">
             @if (User.Identity.IsAuthenticated)
             {
                 <div id="writa-a-review-form-@Model.Id">
-                    @Ajax.ActionLink("Review Attraction »", "Create", "Reviews", new {attractionId = Model.Id, username = User.Identity.Name}, new AjaxOptions
-                    {
-                        InsertionMode = InsertionMode.Replace,
-                        UpdateTargetId = "writa-a-review-form-" + Model.Id
-                    }, new {@class = "btn btn-default"})
+                    @Ajax.ActionLink("Review Attraction »", "Create", "Reviews", new { attractionId = Model.Id, username = User.Identity.Name }, new AjaxOptions
+               {
+                   InsertionMode = InsertionMode.Replace,
+                   UpdateTargetId = "writa-a-review-form-" + Model.Id
+               }, new { @class = "btn btn-default" })
                 </div>
             }
             else
             {
                 <p>Please @Html.ActionLink("Login", "Login", "Account") to review this attraction!</p>
             }
-
-        </dd>
-    </dl>
+        </div>
+    </div>
 </div>
-<p>
+<div id="attrIndexViewLinks">
     @if (User.IsInRole("Admin"))
     {
         @Html.ActionLink("Edit", "Edit", new { id = Model.Id })
         @:|
     }
-    
+
     @Html.ActionLink("Back to List", "Index")
-</p>
+</div>
+<hr />
 <div id="map" style="width: 100%; height: 400px; position: relative;"> </div>
 @section scripts{
     <script>

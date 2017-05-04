@@ -4,56 +4,72 @@
     ViewBag.Title = "Index";
 }
 
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Title)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.StarRating)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ReviewText)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.WorthVisiting)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Date)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Author)
-        </th>
-        <th></th>
-    </tr>
-
-    @foreach (var item in Model)
-    {
+@*<table class="table">
         <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Title)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.StarRating)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ReviewText)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.WorthVisiting)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Date)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Author)
-            </td>
-            @if (User.IsInRole("Admin"))
-            {
-                <td>
-                    @Html.ActionLink("Delete", "Delete", new { id = item.Id })
-                </td>
-            }
+            <th>
+                @Html.DisplayNameFor(model => model.Title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StarRating)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ReviewText)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.WorthVisiting)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Date)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Author)
+            </th>
+            <th></th>
         </tr>
-    }
-</table>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Title)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.StarRating)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ReviewText)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.WorthVisiting)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Date)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Author)
+                </td>
+                @if (User.IsInRole("Admin"))
+                {
+                    <td>
+                        @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                    </td>
+                }
+            </tr>
+        }
+    </table>*@
+
+@foreach (var item in Model)
+{
+    <div id="reviewContainer">
+        <h4>@Html.DisplayFor(modelItem => item.Title)</h4>
+        <p><i><span style="color:green">@Html.DisplayFor(modelItem => item.Author)</span> posted on @Html.DisplayFor(modelItem => item.Date). Attraction rated with <b><span style="color:lightcoral">@Html.DisplayFor(modelItem => item.StarRating)</span></b> stars.</i></p>
+        <div>
+            <p>@Html.DisplayFor(modelItem => item.ReviewText)</p>
+            @Html.DisplayNameFor(model => model.WorthVisiting) @Html.DisplayFor(modelItem => item.WorthVisiting)
+        </div>
+        @if (User.IsInRole("Admin"))
+        {
+            @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+        }
+    </div>
+}

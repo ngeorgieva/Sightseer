@@ -143,6 +143,68 @@
                 Longitude = "2.2922926"
             });
 
+            var townRome = GetTown(context, "Italy", "Rome");
+            context.Attractions.AddOrUpdate(a => a.Name,
+            new Attraction()
+            {
+                Name = "Colosseum",
+                Address = new Address() { FirstLine = "Piazza del Colosseo, 1", Postcode = "00184", Town = townRome },
+                Description = @"The Colosseum is an oval amphitheatre in the centre of the city of Rome, Italy. Built of concrete and sand,[1] it is the largest amphitheatre ever built. The Colosseum is situated just east of the Roman Forum. Construction began under the emperor Vespasian in AD 72, and was completed in AD 80 under his successor and heir Titus.[3] Further modifications were made during the reign of Domitian (81–96). These three emperors are known as the Flavian dynasty, and the amphitheatre was named in Latin for its association with their family name (Flavius).
+
+The Colosseum could hold, it is estimated, between 50,000 and 80,000 spectators,] having an average audience of some 65,000; it was used for gladiatorial contests and public spectacles such as mock sea battles (for only a short time as the hypogeum was soon filled in with mechanisms to support the other activities), animal hunts, executions, re-enactments of famous battles, and dramas based on Classical mythology. The building ceased to be used for entertainment in the early medieval era. It was later reused for such purposes as housing, workshops, quarters for a religious order, a fortress, a quarry, and a Christian shrine.
+
+Although partially ruined because of damage caused by earthquakes and stone-robbers, the Colosseum is still an iconic symbol of Imperial Rome. It is one of Rome's most popular tourist attractions and also has links to the Roman Catholic Church, as each Good Friday the Pope leads a torchlit ""Way of the Cross"" procession that starts in the area around the Colosseum.
+
+The Colosseum is also depicted on the Italian version of the five-cent euro coin.",
+                Image = this.DownloadImage("http://saveti.bg/wp-content/uploads/2015/06/colosseum1.jpg"),
+                Latitude = "41.8902102",
+                Longitude = "12.4900422"
+            });
+
+            var townLondon = GetTown(context, "United Kingdom", "London");
+            context.Attractions.AddOrUpdate(a => a.Name,
+            new Attraction()
+            {
+                Name = "The British Museum",
+                Address = new Address() { FirstLine = "Great Russell St, Bloomsbury", Postcode = "WC1B 3DG", Town = townLondon },
+                Description = @"The British Museum is dedicated to human history, art and culture, and is located in the Bloomsbury area of London. Its permanent collection, numbering some 8 million works, is among the largest and most comprehensive in existence and originates from all continents, illustrating and documenting the story of human culture from its beginnings to the present.
+
+The British Museum was established in 1753, largely based on the collections of the physician and scientist Sir Hans Sloane. The museum first opened to the public on 15 January 1759, in Montagu House, on the site of the current building. Its expansion over the following two and a half centuries was largely a result of an expanding British colonial footprint and has resulted in the creation of several branch institutions, the first being the British Museum of Natural History in South Kensington in 1881 (it is nowadays simply called the Natural History Museum).
+
+In 1973, the British Library Act 1972 detached the library department from the British Museum, but it continued to host the now separated British Library in the same Reading Room and building as the museum until 1997. The museum is a non-departmental public body sponsored by the Department for Culture, Media and Sport, and as with all other national museums in the United Kingdom it charges no admission fee, except for loan exhibitions.",
+                Image = this.DownloadImage("http://www.fosterandpartners.com/media/1705103/img0.jpg"),
+                Latitude = "51.5194133",
+                Longitude = "-0.1269566"
+            });
+
+            var townAgra = GetTown(context, "India", "Arga");
+            context.Attractions.AddOrUpdate(a => a.Name,
+            new Attraction()
+            {
+                Name = "Taj Mahal",
+                Address = new Address() { FirstLine = "Dharmapuri, Forest Colony, Tajganj", Postcode = "282001", Town = townAgra },
+                Description = @"The Taj Mahal meaning Crown of the Palace) is an ivory-white marble mausoleum on the south bank of the Yamuna river in the Indian city of Agra. It was commissioned in 1632 by the Mughal emperor, Shah Jahan (reigned 1628–1658), to house the tomb of his favourite wife, Mumtaz Mahal. The tomb is the centrepiece of a 17-hectare (42-acre) complex, which includes a mosque and a guest house, and is set in formal gardens bounded on three sides by a crenellated wall.
+
+Construction of the mausoleum was essentially completed in 1643 but work continued on other phases of the project for another 10 years. The Taj Mahal complex is believed to have been completed in its entirety in 1653 at a cost estimated at the time to be around 32 million rupees, which in 2015 would be approximately 52.8 billion rupees (US$827 million). The construction project employed some 20,000 artisans under the guidance of a board of architects led by the court architect to the emperor, Ustad Ahmad Lahauri.
+
+The Taj Mahal was designated as a UNESCO World Heritage Site in 1983 for being ""the jewel of Muslim art in India and one of the universally admired masterpieces of the world's heritage"". Described by Nobel laureate Rabindranath Tagore as ""the tear-drop on the cheek of time"", it is regarded by many as the best example of Mughal architecture and a symbol of India's rich history. The Taj Mahal attracts 7–8 million visitors a year. In 2007, it was declared a winner of the New7Wonders of the World (2000–2007) initiative.",
+                Image = this.DownloadImage("http://webneel.com/daily/sites/default/files/images/daily/04-2014/6-taj-mahal-hdr.preview.jpg"),
+                Latitude = "27.1750151",
+                Longitude = "78.0421552"
+            });
+
+            var townSydney = GetTown(context, "Australia", "Sydney");
+            context.Attractions.AddOrUpdate(a => a.Name,
+            new Attraction()
+            {
+                Name = "Sydney Opera House",
+                Address = new Address() { FirstLine = "Bennelong Point", Postcode = "NSW 2000", Town = townSydney },
+                Description = @"The Sydney Opera House is a multi-venue performing arts centre in Sydney, Australia. It is one of the 20th century's most famous and distinctive buildings. Designed by Danish architect Jørn Utzon, the building was formally opened on 20 October 1973[4] after a gestation beginning with Utzon's 1957 selection as winner of an international design competition. The government of New South Wales, led by the premier, Joseph Cahill, authorised work to begin in 1958 with Utzon directing construction. The government's decision to build Utzon's design is often overshadowed by circumstances that followed, including cost and scheduling overruns as well as the architect's ultimate resignation. The building and its surrounds occupy the whole of Bennelong Point on Sydney Harbour, between Sydney Cove and Farm Cove, adjacent to the Sydney central business district and the Royal Botanic Gardens, and close by the Sydney Harbour Bridge. Though its name suggests a single venue, the building comprises multiple performance venues which together are among the busiest[citation needed] performing arts centres – hosting well over 1, 500 performances annually, attended by more than 1.2 million people.[6] Performances are presented by numerous performing artists, including four resident companies: Opera Australia, The Australian Ballet, the Sydney Theatre Company and the Sydney Symphony Orchestra.As one of the most popular visitor attractions in Australia, more than eight million people visit the site annually, and approximately 350,000 visitors take a guided tour of the building each year. The building is managed by the Sydney Opera House Trust, an agency of the New South Wales State Government.",
+                Image = this.DownloadImage("https://userscontent2.emaze.com/images/3627301d-f3ae-4fb0-99f2-1855979c3096/b4b55a561e2232b9d3b115a8d1f27c14.jpg"),
+                Latitude = "-33.8567844",
+                Longitude = "151.2152967"
+            });
+
             this.SaveChanges(context);
         }
 
