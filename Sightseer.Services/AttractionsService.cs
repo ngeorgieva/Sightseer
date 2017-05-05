@@ -40,7 +40,20 @@
 
             if (searchValue != null)
             {
-                attractions = this.Context.Attractions.OrderByDescending(a => a.Rating).Where(a => a.Name.Contains(searchValue));
+                attractions = this.Context.Attractions.Where(a => a.Name.Contains(searchValue)).OrderByDescending(a => a.Rating);
+                if (!attractions.Any())
+                {
+                    attractions =
+                        this.Context.Attractions.Where(a => a.Address.Town.Name.Contains(searchValue))
+                            .OrderByDescending(a => a.Rating);
+
+                    if (!attractions.Any())
+                    {
+                        attractions =
+                            this.Context.Attractions.Where(a => a.Address.Town.Country.Name.Contains(searchValue))
+                                .OrderByDescending(a => a.Rating);
+                    }
+                }
             }
             else
             {

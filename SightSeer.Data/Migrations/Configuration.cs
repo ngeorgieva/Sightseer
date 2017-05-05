@@ -177,7 +177,7 @@ In 1973, the British Library Act 1972 detached the library department from the B
                 Longitude = "-0.1269566"
             });
 
-            var townAgra = GetTown(context, "India", "Arga");
+            var townAgra = GetTown(context, "India", "Agra");
             context.Attractions.AddOrUpdate(a => a.Name,
             new Attraction()
             {

@@ -15,6 +15,7 @@
 
         [Required]
         [Display(Name = "Review Text")]
+        [DataType(DataType.MultilineText)]
         public string ReviewText { get; set; }
 
         [Display(Name = "Worth Visiting")]
