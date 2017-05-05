@@ -371,14 +371,17 @@
                     return this.View("ExternalLoginFailure");
                 }
                 var user = new ApplicationUser { UserName = model.Email, Email = model.Email, FirstName = model.FirstName, LastName = model.LastName, DateOfBirth = model.DateOfBirth };
-                var result = await this.UserManager.CreateAsync(user);
+                var result = await this.UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
                     result = await this.UserManager.AddLoginAsync(user.Id, info.Login);
                     if (result.Succeeded)
                     {
-                        await this.SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
-                        return this.RedirectToLocal(returnUrl);
+                        //await this.SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
+                        //return this.RedirectToLocal(returnUrl);
+
+                        this.AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
+                        return this.RedirectToAction("Login", "Account");
                     }
                 }
                 this.AddErrors(result);
