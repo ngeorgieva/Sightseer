@@ -112,7 +112,9 @@
     <Compile Include="Controllers\TestReviewsController.cs" />
     <Compile Include="Controllers\TestUsersController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\TestHomeService.cs" />
     <Compile Include="Services\TestAttractionService.cs" />
+    <Compile Include="Services\TestReviewsService.cs" />
     <Compile Include="Services\TestUserService.cs" />
   </ItemGroup>
   <ItemGroup>
