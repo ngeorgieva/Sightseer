@@ -2,7 +2,6 @@
 {
     using AutoMapper;
     using Microsoft.VisualStudio.TestTools.UnitTesting;
-    using Models.BindingModels;
     using Models.EntityModels;
     using Models.ViewModels.Attractions;
     using Models.ViewModels.Users;

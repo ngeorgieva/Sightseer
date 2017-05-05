@@ -27,7 +27,7 @@
             return avm;
         }
 
-        public Attraction GetAttractionImage(int id)
+        public Attraction GetAttraction(int id)
         {
             var attr = this.Context.Attractions.Find(id);
 
@@ -59,7 +59,7 @@
             {
                 attractions = this.Context.Attractions.OrderByDescending(a => a.Rating);
             }
-            
+
             var pageNumber = page ?? 1;
             var onePageOfAttractions = attractions.ToPagedList(pageNumber, 4).ToMappedPagedList<Attraction, AttractionVm>();
 
@@ -128,7 +128,7 @@
                 {
                     attraction.Address = address;
                 }
-                
+
             }
 
             if (file != null)
@@ -136,6 +136,19 @@
                 attraction.Image = this.GetImageFromBind(file);
             }
 
+            this.Context.SaveChanges();
+        }
+
+        public Attraction GetAttractionByName(string name)
+        {
+            return this.Context.Attractions.FirstOrDefault(a => a.Name == name);
+        }
+
+
+        public void DeleteAttraction(Attraction attraction)
+        {
+
+            this.Context.Attractions.Remove(attraction);
             this.Context.SaveChanges();
         }
 

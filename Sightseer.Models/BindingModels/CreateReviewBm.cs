@@ -4,9 +4,12 @@
 
     public class CreateReviewBm
     {
+        [Required]
+        [StringLength(100, ErrorMessage = "The review title cannot be longer than 100 symbols.")]
         public string Title { get; set; }
 
         [Display(Name = "Rating")]
+        [Range(1, 5, ErrorMessage = "The attraction cannot be rated with less than 1 stars or more than 5 stars.")]
         public int StarRating { get; set; }
 
         [Required]

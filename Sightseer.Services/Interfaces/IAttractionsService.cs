@@ -9,11 +9,13 @@
     public interface IAttractionsService
     {
         AttractionDetailsVm GetAttractionDetailsVm(int id);
-        Attraction GetAttractionImage(int id);
+        Attraction GetAttraction(int id);
         IEnumerable<AttractionVm> GetAllAttractions(int? page, string searchString);
         void CreateAttraction(CreateAttractionBm bind, HttpPostedFileBase file);
         EditAttractionVm GetEditAttractionVm(int id);
         void EditAttraction(EditAttractionBm bind, HttpPostedFileBase file);
+        Attraction GetAttractionByName(string name);
+        void DeleteAttraction(Attraction attraction);
         void Dispose();
     }
 }

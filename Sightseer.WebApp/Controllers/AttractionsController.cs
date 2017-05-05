@@ -111,7 +111,7 @@
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
 
-            Attraction attraction = this.service.GetAttractionImage((int)id);
+            Attraction attraction = this.service.GetAttraction((int)id);
 
             return this.PartialView(attraction);
         }

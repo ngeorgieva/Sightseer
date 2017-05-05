@@ -154,7 +154,7 @@
         [TestMethod]
         public void AttractionImage_AllOk_ShouldReturnCorrectpartilaView()
         {
-            this.serviceMock.Setup(s => s.GetAttractionImage(3)).Returns(new Attraction());
+            this.serviceMock.Setup(s => s.GetAttraction(3)).Returns(new Attraction());
 
             this.controller.WithCallTo(attrController => attrController.AttractionImage(3))
                 .ShouldRenderPartialView("AttractionImage")
